@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  jplevel: 1
+  classname: MyString
+  school: MyString
+  starttime: 2014-02-06 16:55:40
+  endtime: 2014-02-06 16:55:40
+  sunday: false
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturaday: false
+  duration: 1.5
+  startdate: 2014-02-06
+
+two:
+  jplevel: 1
+  classname: MyString
+  school: MyString
+  starttime: 2014-02-06 16:55:40
+  endtime: 2014-02-06 16:55:40
+  sunday: false
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturaday: false
+  duration: 1.5
+  startdate: 2014-02-06

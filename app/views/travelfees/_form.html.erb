@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :userid %>
-    <%= f.select :userid, :collection=>[0001,0002]%>
+    <%= f.label :userid %><br />
+    <%= f.number_field :userid %>
   </div>
   <div class="field">
-    <%= f.label :classname %>
+    <%= f.label :classname %><br />
     <%= f.text_field :classname %>
   </div>
   <div class="field">
-    <%= f.label :date %>
+    <%= f.label :date %><br />
     <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.label :travel_fee %>
+    <%= f.label :travel_fee %><br />
     <%= f.number_field :travel_fee %>
   </div>
   <div class="actions">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140206114238) do
+ActiveRecord::Schema.define(:version => 20140210091236) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "userid"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(:version => 20140206114238) do
     t.boolean  "saturaday"
     t.float    "duration"
     t.date     "startdate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "travelfees", :force => true do |t|
+    t.integer  "userid"
+    t.string   "classname"
+    t.date     "date"
+    t.integer  "travel_fee"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

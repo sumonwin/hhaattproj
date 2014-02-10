@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  userid: 1
+  classname: MyString
+  date: 2014-02-10
+  travel_fee: 1
+
+two:
+  userid: 1
+  classname: MyString
+  date: 2014-02-10
+  travel_fee: 1

@@ -1,14 +1,9 @@
 Attendanceproject::Application.routes.draw do
-  resources :travelfees
-
-
   devise_for :users
 
   resources :users
+
   resources :attendances
-  get "home/get"
- 
-  
   resources :timetables
 
 

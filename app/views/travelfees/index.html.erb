@@ -1,7 +1,4 @@
-<html>
 <h1>Listing travelfees</h1>
-
-
 
 <table>
   <tr>
@@ -13,23 +10,20 @@
     <th></th>
     <th></th>
   </tr>
-  <% @travelfees.each do |travelfee| %>
+
+<% @travelfees.each do |travelfee| %>
   <tr>
     <td><%= travelfee.userid %></td>
     <td><%= travelfee.classname %></td>
     <td><%= travelfee.date %></td>
-    <td><center><%= travelfee.travel_fee %></td></center>
+    <td><%= travelfee.travel_fee %></td>
     <td><%= link_to 'Show', travelfee %></td>
     <td><%= link_to 'Edit', edit_travelfee_path(travelfee) %></td>
     <td><%= link_to 'Destroy', travelfee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-
-
 </table>
 
 <br />
 
-<%= will_paginate @travelfees %>
-<%= link_to 'New Travel Fee', new_travelfee_path %>
-</html>
+<%= link_to 'New Travelfee', new_travelfee_path %>

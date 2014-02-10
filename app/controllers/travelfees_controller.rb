@@ -1,17 +1,12 @@
 class TravelfeesController < ApplicationController
-  #require 'will_paginate'
-  #require 'will_paginate/active_record'
-
   # GET /travelfees
   # GET /travelfees.json
   def index
     @travelfees = Travelfee.all
-    @travelfees=Travelfee.paginate(:page=>params[:page],:per_page=>10)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @travelfees }
-
     end
   end
 
