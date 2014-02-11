@@ -1,5 +1,24 @@
 <h1>Listing users</h1>
+<%= form_tag users_path, :method => "get" do%>
+<table>
+    <tr>
+        <td>userid</td>
+        <td><%= text_field_tag :userid, params[:userid]%></td>
 
+    </tr>
+    <tr>
+        <td>name</td>
+        <td><%= text_field_tag :name, params[:name]%></td>
+        
+    </tr>
+     <tr>
+        <td>team</td>
+        <td><%= text_field_tag :team, params[:team]%></td>
+        
+    </tr>
+</table>
+<%= submit_tag :find %>
+<% end %>
 <table>
   <tr>
     <th>Userid</th>

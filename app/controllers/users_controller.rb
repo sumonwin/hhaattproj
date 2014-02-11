@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+     @users=User.paginate(:page => params[:page],:per_page =>5).find(:all,:conditions => ["userid Like ? && name Like ? && team Like ? ","%#{params[:userid]}%","%#{params[:name]}%","%#{params[:team]}%}"])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,12 +24,16 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    
     @user = User.new
-
+   
     respond_to do |format|
+      
       format.html # new.html.erb
       format.json { render json: @user }
+    
     end
+    
   end
 
   # GET /users/1/edit
@@ -44,9 +48,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
+
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

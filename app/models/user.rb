@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :NRCNumber, :address, :date_of_entry, :dob, :gender, :leaveday, :name, :normaltravelfee, :phone, :team, :userid, :year_of_entry
 validates :userid, numericality: {only_integer:true}
-validates :name, presence: true,format: {with:/\A[a-zA-Z0-9]+\z/,message:"only letters allowed"}
+validates :name, presence: true,format: {with:/\A[a-zA-Z0-9]+\z/,message:"only letters allowed not space"}
 validates :address,  presence: true
 validates :phone, numericality: {only_integer:true}
 validates :team, presence: true

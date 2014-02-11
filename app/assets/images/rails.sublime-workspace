@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"action",
+				"action_mailer"
+			],
+			[
 				"co",
 				"controller"
 			],
@@ -63,9 +67,20 @@
 	},
 	"file_history":
 	[
-		"/home/sumyatnoelwin/newattproj/config/database.yml",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/users/show.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/config/routes.rb",
+		"/home/sumyatnoelwin/Testing/attproj/config/environments/development.rb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/home/get.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/users/new.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/users/_form.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/devise/registrations/new.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/users_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/config/routes.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/application_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/shared/_links.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/home/get.html.erb",
+		"/home/sumyatnoelwin/newattproj/config/database.yml",
 		"/home/sumyatnoelwin/HHATest/testlogin/config/routes.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/users/show.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/users/index.html.erb",
@@ -75,7 +90,6 @@
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/users/new.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/users/index.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/layouts/application.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/config/environments/development.rb",
 		"/home/sumyatnoelwin/HHATest/testlogin/config/environments/production.rb",
@@ -201,7 +215,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 308.0,
+	"side_bar_width": 188.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
