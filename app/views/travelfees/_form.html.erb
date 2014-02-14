@@ -1,4 +1,4 @@
-<%= form_for(@travelfee) do |f| %>
+<%= simple_form_for(@travelfee) do |f| %>
   <% if @travelfee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@travelfee.errors.count, "error") %> prohibited this travelfee from being saved:</h2>
@@ -12,12 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :userid %><br />
-    <%= f.number_field :userid %>
+  
+    <%= f.input :userid, :as => :select, :collection => @users.map { |u| [u.userid,u.userid] } %>
+    
   </div>
   <div class="field">
-    <%= f.label :classname %><br />
-    <%= f.text_field :classname %>
+    
+   <%= f.input :classname, :as => :select, :collection => @timetables.map { |u| [u.classname,u.classname] } %>
   </div>
   <div class="field">
     <%= f.label :date %><br />

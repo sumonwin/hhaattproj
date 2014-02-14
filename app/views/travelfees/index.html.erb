@@ -1,5 +1,26 @@
 <h1>Listing travelfees</h1>
+<%= form_tag travelfees_path, :method => "get" do %>
+<table>
+    <tr>
+        <td>User id</td> 
+        <td><%= select_tag :userid, options_for_select(@users.collect{|u| [u.userid,u.userid]}) %>
+        </td>
 
+    </tr>
+    <tr>
+        <td>From Date</td>
+        <td> <%= date_select :date, params[:date] %></td>
+        
+    </tr>
+    <tr>
+        <td>End Date</td>
+        <td> <%= date_select :date, params[:date] %></td>
+        
+    </tr>
+     
+</table>
+<%= submit_tag :Search %>
+<% end %>
 <table>
   <tr>
     <th>Userid</th>
@@ -25,5 +46,5 @@
 </table>
 
 <br />
-
+<%= will_paginate @travelfees %>
 <%= link_to 'New Travelfee', new_travelfee_path %>

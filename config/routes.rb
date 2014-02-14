@@ -9,8 +9,10 @@ Attendanceproject::Application.routes.draw do
   resources :attendances
   get "home/get"
  
-  
   resources :timetables
+  # get "timetables/"
+  
+
 
 
   # The priority is based upon order of creation:

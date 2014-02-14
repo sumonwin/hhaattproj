@@ -3,6 +3,59 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.label :userid %><br />
+    <%= f.number_field :userid %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :normaltravelfee %><br />
+    <%= f.number_field :normaltravelfee %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.label :gender,"female",:value=>true %>
+    <%= f.radio_button:gender,true %>
+    <%= f.label :gender,"male",:value=>false %>
+    <%= f.radio_button:gender,false %></br>
+    
+  </div>
+  <div class="field">
+    <%= f.label :team %><br />
+    <%= f.text_field :team %>
+  </div>
+  <div class="field">
+    <%= f.label :NRCNumber %><br />
+    <%= f.text_field :NRCNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :year_of_entry %><br />
+    <%= f.number_field :year_of_entry %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_entry %><br />
+    <%= f.date_select :date_of_entry %>
+  </div>
+  <div class="field">
+    <%= f.label :leaveday %><br />
+    <%= f.number_field :leaveday %>
+  </div>
+
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 

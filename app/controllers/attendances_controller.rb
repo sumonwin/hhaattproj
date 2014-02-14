@@ -1,9 +1,10 @@
+require "users_controller"
 class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = Attendance.all
-
+    @attendances = @timetables = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"])
+     @users = User.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @attendances }
@@ -25,7 +26,7 @@ class AttendancesController < ApplicationController
   # GET /attendances/new.json
   def new
     @attendance = Attendance.new
-
+    @users = User.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @attendance }
@@ -35,13 +36,14 @@ class AttendancesController < ApplicationController
   # GET /attendances/1/edit
   def edit
     @attendance = Attendance.find(params[:id])
+    @users = User.all
   end
 
   # POST /attendances
   # POST /attendances.json
   def create
     @attendance = Attendance.new(params[:attendance])
-
+    @users = User.all
     respond_to do |format|
       if @attendance.save
         format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }

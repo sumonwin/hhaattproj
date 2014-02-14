@@ -1,18 +1,13 @@
-<%= link_to 'Timetable', new_timetable_path %>
-<%= link_to 'Attendance', new_attendance_path %>
-<%= link_to 'Travelfee', new_travelfee_path %>
-
-<%= link_to 'User', new_user_path %>
 <br>
 <br>
-
-
 <table>
   <tr>
     <th>Userid</th>
     <th>Date</th>
     <th>Reachtime</th>
     <th>Leavetime</th>
+    <th>Attendance</th>
+    <th>Travelfee</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,6 +18,8 @@
     <td><%= attendance.date %></td>
     <td><%= attendance.reachtime %></td>
     <td><%= attendance.leavetime %></td>
+    <td></td>
+    <td></td>
     <td><%= link_to 'Show', attendance %></td>
     <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
     <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,5 +31,13 @@
 
 <br />
 
-<%= link_to 'New Attendance', new_attendance_path %>
+<%= link_to 'See More', attendances_path %>
+
+
+
+
+
+
+
+
 

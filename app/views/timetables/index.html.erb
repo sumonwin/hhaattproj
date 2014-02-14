@@ -1,5 +1,20 @@
 <h1>Listing timetables</h1>
+<%= form_tag timetables_path, :method => "get" do %>
+<table>
+    <tr>
+        <td>jplevel</td>
+        <td>  <%= select_tag "jplevel",options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5]],1  ) %></td>
 
+    </tr>
+    <tr>
+        <td>school</td>
+        <td> <%= select_tag "school", options_for_select(%w[Win Momiji GIC])%></td>
+        
+    </tr>
+     
+</table>
+<%= submit_tag :find %>
+<% end %>
 <table>
   <tr>
     <th>Jplevel</th>
@@ -16,7 +31,6 @@
     <th>Saturaday</th>
     <th>Duration</th>
     <th>Startdate</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -37,7 +51,7 @@
     <td><%= timetable.saturaday %></td>
     <td><%= timetable.duration %></td>
     <td><%= timetable.startdate %></td>
-    <td><%= link_to 'Show', timetable %></td>
+     <td><%= link_to 'Show', timetable %></td>
     <td><%= link_to 'Edit', edit_timetable_path(timetable) %></td>
     <td><%= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -45,5 +59,5 @@
 </table>
 
 <br />
-
+<%= will_paginate @timetables %>
 <%= link_to 'New Timetable', new_timetable_path %>

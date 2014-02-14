@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"atte",
+				"attendances"
+			],
+			[
+				"time",
+				"timetable"
+			],
+			[
+				"tra",
+				"travel_fee"
+			],
+			[
+				"user",
+				"userid"
+			],
+			[
+				"ti",
+				"timetable"
+			],
+			[
+				"fe",
+				"female"
+			],
+			[
+				"ed",
+				"end"
+			],
+			[
+				"si",
+				"sign_in"
+			],
+			[
+				"par",
+				"params"
+			],
+			[
+				"fin",
+				"find"
+			],
+			[
 				"action",
 				"action_mailer"
 			],
@@ -18,10 +58,6 @@
 			[
 				"tr",
 				"true"
-			],
-			[
-				"user",
-				"users_path"
 			],
 			[
 				"pa",
@@ -39,6 +75,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/sumyatnoelwin/HHA/attproj/app/controllers/travelfees_controller.rb",
+			"settings":
+			{
+				"buffer_size": 2256,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -67,26 +111,45 @@
 	},
 	"file_history":
 	[
-		"/home/sumyatnoelwin/Testing/attproj/app/views/users/show.html.erb",
-		"/home/sumyatnoelwin/Testing/attproj/config/routes.rb",
-		"/home/sumyatnoelwin/Testing/attproj/config/environments/development.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/layouts/application.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/home/get.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/shared/_links.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/application_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/attendance.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/travelfees_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/attendances_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/_form.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/user.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/_form.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/travelfee.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/timetables_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/config/routes.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/show.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/Gemfile",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/timetable.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/show.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/registrations/new.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/users_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/registrations/edit.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/devise/registrations/edit.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/Gemfile",
+		"/home/sumyatnoelwin/Testing/attproj/Gemfile.lock",
 		"/home/sumyatnoelwin/Testing/attproj/app/views/home/get.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/devise/registrations/new.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/config/routes.rb",
+		"/home/sumyatnoelwin/Testing/attproj/app/views/users/show.html.erb",
+		"/home/sumyatnoelwin/Testing/attproj/config/environments/development.rb",
 		"/home/sumyatnoelwin/Testing/attproj/app/views/users/new.html.erb",
 		"/home/sumyatnoelwin/Testing/attproj/app/views/users/_form.html.erb",
-		"/home/sumyatnoelwin/Testing/attproj/app/views/devise/registrations/new.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/controllers/users_controller.rb",
-		"/home/sumyatnoelwin/HHA/attproj/config/routes.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/controllers/application_controller.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/shared/_links.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/home/get.html.erb",
 		"/home/sumyatnoelwin/newattproj/config/database.yml",
 		"/home/sumyatnoelwin/HHATest/testlogin/config/routes.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/show.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/index.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/controllers/users_controller.rb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/devise/registrations/new.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/registrations/new.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/users/new.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHATest/testlogin/app/views/users/index.html.erb",
@@ -138,8 +201,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/sumyatnoelwin/HHA/attproj/app/controllers/travelfees_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2256,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								296,
+								296
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -215,7 +309,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 188.0,
+	"side_bar_width": 336.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

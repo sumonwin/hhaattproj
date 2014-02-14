@@ -2,7 +2,8 @@ class TimetablesController < ApplicationController
   # GET /timetables
   # GET /timetables.json
   def index
-    @timetables = Timetable.all
+    @timetables = Timetable.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" jplevel  LIKE? && school LIKE? ", "%#{params[:jplevel]}%","%#{params[:school]}%"])
+    # @timetables = Timetable.all
 
     respond_to do |format|
       format.html # index.html.erb

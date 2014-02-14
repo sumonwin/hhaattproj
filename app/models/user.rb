@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+ has_many:travelfees
+ has_many:attendance
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :NRCNumber, :address, :date_of_entry, :dob, :gender, :leaveday, :name, :normaltravelfee, :phone, :team, :userid, :year_of_entry
@@ -17,4 +18,6 @@ validates :normaltravelfee, numericality: {only_integer:true}
 validates :year_of_entry, presence: true, numericality: {only_integer:true}
 validates :leaveday, numericality: {only_integer:true}
 validates :date_of_entry,presence: true
+self.per_page=5
 end
+WillPaginate.per_page=5

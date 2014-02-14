@@ -40,7 +40,7 @@
     <%= f.label :gender,"female",:value=>true %>
     <%= f.radio_button:gender,true %>
     <%= f.label :gender,"male",:value=>false %>
-    <%= f.radio_button:gender,false %></br>
+    <%= f.radio_button:gender,false ,:checked=>true%></br>
     
   </div>
   <div class="field">
@@ -63,7 +63,7 @@
     <%= f.label :leaveday %><br />
     <%= f.number_field :leaveday %>
   </div>
-   <div><%= f.label :email %><br />
+  <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
   <div><%= f.label :password %><br />
@@ -71,8 +71,9 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
- 
-  <div class="actions">
+
+  
+ <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
