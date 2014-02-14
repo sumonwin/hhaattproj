@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br />
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob , :start_year => Time.now.year - 110, :end_year => Time.now.year %>
   </div>
   <div class="field">
     <%= f.label :address %><br />
@@ -37,10 +37,11 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br />
+     <%= f.label :gender,"male",:value=>false %>
+    <%= f.radio_button:gender,false ,:checked=>true%>
     <%= f.label :gender,"female",:value=>true %>
     <%= f.radio_button:gender,true %>
-    <%= f.label :gender,"male",:value=>false %>
-    <%= f.radio_button:gender,false ,:checked=>true%></br>
+   </br>
     
   </div>
   <div class="field">

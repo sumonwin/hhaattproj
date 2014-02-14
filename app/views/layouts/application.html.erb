@@ -8,7 +8,7 @@
 </head>
 <body>
 <% if user_signed_in? %>
-<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+<%= link_to "Sign Out", destroy_user_session_path %>
 <%= link_to 'Timetable', timetables_path %>
 <%= link_to 'Attendance', attendances_path %>
 <%= link_to 'Travelfee', travelfees_path %>

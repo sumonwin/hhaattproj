@@ -1,8 +1,8 @@
 Attendanceproject::Application.routes.draw do
   resources :travelfees
+  
 
   devise_for :users
-  
 
   resources :users
 
@@ -10,6 +10,8 @@ Attendanceproject::Application.routes.draw do
   get "home/get"
  
   resources :timetables
+
+
   # get "timetables/"
   
 
@@ -65,6 +67,12 @@ Attendanceproject::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#get'
+  devise_for :users, :skip => [:sessions] 
+  as :user do
+    get 'signin' => 'devise/sessions#new', :as => :new_user_session
+    post 'signin' => 'devise/sessions#create', :as => :new_user_session
+    get 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
 
   # See how all your routes lay out with "rake routes"
 

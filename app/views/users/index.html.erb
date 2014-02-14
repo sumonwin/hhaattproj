@@ -1,6 +1,7 @@
 <h1>Listing users</h1>
 <%= form_tag users_path, :method => "get" do%>
 <table>
+
     <tr>
         <td>User id</td> 
         <td><%= select_tag :userid, options_for_select(@users.collect{|u| [u.userid,u.userid]}) %>
@@ -20,6 +21,7 @@
 </table>
 <%= submit_tag :find %>
 <% end %>
+
 <table>
   <tr>
     <th>Userid</th>
