@@ -80,10 +80,26 @@
 	"buffers":
 	[
 		{
-			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
+			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
 			"settings":
 			{
-				"buffer_size": 2125,
+				"buffer_size": 1856,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 1207,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/show.html.erb",
+			"settings":
+			{
+				"buffer_size": 357,
 				"line_ending": "Unix"
 			}
 		}
@@ -115,31 +131,32 @@
 	},
 	"file_history":
 	[
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/attendances_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/users_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/timetable.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/attendance.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/show.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/home/get.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/show.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/models/user.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/layouts/application.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/controllers/application_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/config/routes.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/sessions/new.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/_form.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/home/get.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/models/travelfee.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/controllers/travelfees_controller.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/models/user.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/models/attendance.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/controllers/users_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/_form.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/models/timetable.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/_form.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/controllers/attendances_controller.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/index.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/controllers/timetables_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/shared/_links.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/show.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/Gemfile",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/users/show.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/registrations/new.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/registrations/edit.html.erb",
 		"/home/sumyatnoelwin/Testing/attproj/app/views/devise/registrations/edit.html.erb",
@@ -212,19 +229,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
+					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2125,
+						"buffer_size": 1856,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1150,
-								1150
+								1683,
+								1683
 							]
 						],
 						"settings":
@@ -234,10 +251,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 510.0,
+						"translation.y": 612.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1207,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								215,
+								215
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/show.html.erb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 357,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -315,7 +390,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 193.0,
+	"side_bar_width": 259.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

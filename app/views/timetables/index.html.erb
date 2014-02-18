@@ -40,8 +40,8 @@
     <td><%= timetable.jplevel %></td>
     <td><%= timetable.classname %></td>
     <td><%= timetable.school %></td>
-    <td><%= timetable.starttime %></td>
-    <td><%= timetable.endtime %></td>
+    <td><%= timetable.starttime.strftime("%H:%M:%S") %></td>
+    <td><%= timetable.endtime.strftime("%H:%M:%S")%></td>
     <td><%= timetable.sunday %></td>
     <td><%= timetable.monday %></td>
     <td><%= timetable.tuesday %></td>

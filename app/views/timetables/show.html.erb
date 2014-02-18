@@ -17,12 +17,12 @@
 
 <p>
   <b>Starttime:</b>
-  <%= @timetable.starttime %>
+  <%= @timetable.starttime.strftime("%H:%M:%S") %>
 </p>
 
 <p>
   <b>Endtime:</b>
-  <%= @timetable.endtime %>
+  <%= @timetable.endtime.strftime("%H:%M:%S") %>
 </p>
 
 <p>

@@ -1,21 +1,19 @@
 <h1>Listing attendances</h1>
-
 <%= form_tag attendances_path, :method => "get" do %>
-<table>
+ <table>
     <tr>
         <td>User id</td> 
         <td><%= select_tag :userid, options_for_select(@users.collect{|u| [u.userid,u.userid]}) %>
         </td>
-
     </tr>
     <tr>
         <td>Month</td>
-        <td> <%= select_tag "month", options_for_select(%w[Jan Feb March April May June July Augest Sept Oct Nov Dec])%></td>
-        
+        <td> <%= select_tag "month", options_for_select(%w[Jan Feb March April May June July Augest Sept Oct Nov Dec])%>
+        </td>
     </tr>
      
-</table>
-<%= submit_tag :find %>
+ </table>
+ <%= submit_tag :find %>
 <% end %>
 <table>
   <tr>
@@ -23,17 +21,48 @@
     <th>Date</th>
     <th>Reachtime</th>
     <th>Leavetime</th>
-    <th></th>
+    <th>Attendance</th>
+    <th>Overtime</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @attendances.each do |attendance| %>
+<% att_reacht = attendance.reachtime.strftime("%H:%M:%S") %>
+<% att_leavet = attendance.leavetime.strftime("%H:%M:%S") %>
   <tr>
     <td><%= attendance.userid %></td>
     <td><%= attendance.date %></td>
-    <td><%= attendance.reachtime %></td>
-    <td><%= attendance.leavetime %></td>
+    <td><%= att_reacht %></td>
+    <td><%= att_leavet %></td>
+    <td><% if  ((att_reacht <= "08:30:00") && (att_leavet >= "17:00:00"))%>   Full Day 
+          
+            <% if ( (att_leavet > "17:30:00")) %>
+                <td> <%= Time.at((attendance.leavetime.hour * 3600 + attendance.leavetime.min * 60 + attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> 
+                </td>
+            <% end %>
+
+        <% elsif  ((att_reacht <= "08:30:00")&&((att_leavet >= "12:00:00")&&(att_leavet < "17:00:00"))) %>        Half Day1
+
+        <% else %>
+
+            <% if   (((att_reacht > "08:30:00")&&(att_reacht <= "13:00:00"))&&(att_leavet >= "17:00:00")) %>
+                Half Day2 
+                
+                    <% if ( (att_leavet > "17:30:00")) %>
+                        <td>   <%= Time.at((attendance.leavetime.hour * 3600 + attendance.leavetime.min * 60 +  attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> 
+                        </td>
+                <% end %>
+                
+            <% else %> Absent <td> </td>
+                    
+                    
+            <% end %>
+
+        <% end %>
+
+    </td>
+    
     <td><%= link_to 'Show', attendance %></td>
     <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
     <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>

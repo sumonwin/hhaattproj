@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<% x = @attendance.reachtime.strftime("%H:%M:%S") %>
+<% y = @attendance.leavetime.strftime("%H:%M:%S") %>
+endtimefrom school:<%= @timetable.endtime %> //this is to test class end time correct or incorrect
+<% classendtime = @timetable.endtime.hour * 3600 + @timetable.endtime.min * 60 + @timetable.endtime.sec + 15 * 60 %>
+//to add 15 minutes to classendtime
+<% att_classfinisht = Time.at(classendtime).utc.strftime("%H:%M:%S") %> //to compare reach time
+ 
 <p>
   <b>Userid:</b>
   <%= @attendance.userid %>
@@ -12,14 +18,68 @@
 
 <p>
   <b>Reachtime:</b>
-  <%= @attendance.reachtime %>
+  <%= x %>
 </p>
 
 <p>
   <b>Leavetime:</b>
-  <%= @attendance.leavetime %>
+  <%=  y %>
+</p>
+<p>
+  <b>attendance:</b>
+  <% if  ((x <= "08:30:00" || x <= att_classfinisht) && ( y >= "17:00:00"))%>
+          
+            Full Day
+            <p>
+             <% if ( ( y > "17:30:00")) %>
+
+              <h3>  Overtime: <%= Time.at((@attendance.leavetime.hour * 3600 + @attendance.leavetime.min * 60 + @attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> </h3>
+
+             <% end %>
+            </p>
+
+
+   <% elsif  ((x <= "08:30:00" || x <= att_classfinisht)&&(( y >= "12:00:00")&&( y < "17:00:00"))) %>  leave 1
+
+    
+   <% else %> 
+           <% if   (((x > "08:30:00" || x > att_classfinisht)&&(x <= "13:00:00"))&&( y >= "17:00:00")) %>
+           
+            leave 2
+                <p>
+                  <% if ( ( y > "17:30:00")) %>
+
+                    <h3>  Overtime: <%= Time.at((@attendance.leavetime.hour * 3600 + @attendance.leavetime.min * 60 + @attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> </h3>
+
+                  <% end %>
+                </p>
+              <% else %>
+                  
+                     
+
+                           
+
+                     
+                        
+                          Absent
+                
+                  
+                  
+                   
+                 
+                
+
+
+
+               
+            <% end %>
+
+   <% end %>
+  
 </p>
 
+
+<p color="blue">Time to reach from jp class: <%= att_classfinisht %></p> //This is my calculation result to test  difference between reach time and classend time
 
 <%= link_to 'Edit', edit_attendance_path(@attendance) %> |
 <%= link_to 'Back', attendances_path %>

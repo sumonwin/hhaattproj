@@ -1,21 +1,26 @@
 require "users_controller"
+require "timetables_controller"
+
 class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
     @attendances = @timetables = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"])
      @users = User.all
+    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @attendances }
     end
   end
 
-  # GET /attendances/1
+  # GET /attendances/1   :all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"]
   # GET /attendances/1.json
   def show
     @attendance = Attendance.find(params[:id])
-
+    
+    @timetable = Timetable.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @attendance }
@@ -33,7 +38,7 @@ class AttendancesController < ApplicationController
     end
   end
 
-  # GET /attendances/1/edit
+  # GET /attendances/1/edit 
   def edit
     @attendance = Attendance.find(params[:id])
     @users = User.all
@@ -59,7 +64,7 @@ class AttendancesController < ApplicationController
   # PUT /attendances/1.json
   def update
     @attendance = Attendance.find(params[:id])
-
+     @users = User.all
     respond_to do |format|
       if @attendance.update_attributes(params[:attendance])
         format.html { redirect_to @attendance, notice: 'Attendance was successfully updated.' }
@@ -82,4 +87,6 @@ class AttendancesController < ApplicationController
       format.json { head :no_content }
     end
   end
-end
+  
+  
+ end
