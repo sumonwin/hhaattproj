@@ -5,9 +5,12 @@
   <%= @travelfee.userid %>
 </p>
 
+
 <p>
   <b>Classname:</b>
-  <%= @travelfee.classname %>
+  
+   <% @t=@travelfee.classname.gsub "- ''", ',' %>
+   <%= @t.gsub "-", '' %> 
 </p>
 
 <p>

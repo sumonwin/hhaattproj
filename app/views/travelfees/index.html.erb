@@ -35,7 +35,8 @@
 <% @travelfees.each do |travelfee| %>
   <tr>
     <td><%= travelfee.userid %></td>
-    <td><%= travelfee.classname %></td>
+    <td> <% @t=travelfee.classname.gsub "- ''", ',' %>
+         <%= @t.gsub "-", '' %></td>
     <td><%= travelfee.date %></td>
     <td><%= travelfee.travel_fee %></td>
     <td><%= link_to 'Show', travelfee %></td>

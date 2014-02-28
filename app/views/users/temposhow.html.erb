@@ -1,0 +1,77 @@
+-----------------------------
+<%   @timetables.each do |timetable|  %>
+  <%   @travelfee.each do |travelfee|  %>
+  <% if travelfee.date == @attendance.date %>
+  <% if timetable.saturaday == true  && travelfee.classname == timetable.classname%>
+   <%= timetable.school %> <%= timetable.endtime %>
+
+     <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+   <% elsif timetable.monday == true && travelfee.classname == timetable.classname%>
+    <%= timetable.school %><%= timetable.endtime %>
+     <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+   <% elsif 
+      timetable.tuesday == true && travelfee.classname == timetable.classname%>
+    <%= timetable.school %><%= timetable.endtime %>
+     <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+   <% elsif timetable.wednesday == true && travelfee.classname == timetable.classname%>
+   <%= timetable.school %><%= timetable.endtime %>
+   <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+   <% elsif timetable.thursday== true && travelfee.classname == timetable.classname%>
+   <%= timetable.school %><%= timetable.endtime %>
+   <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+   <% elsif timetable.friday == true && travelfee.classname == timetable.classname%>
+   <%= timetable.school %><%= timetable.endtime %>
+    <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+   <% elsif timetable.sunday == true && travelfee.classname == timetable.classname%>
+    <%= timetable.school %><%= timetable.endtime%>
+    <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec    %> 
+
+<% end -%>
+<% end -%>
+<% end -%>
+<% end %>
+
+----------------------------------------------
+ <% @timetables.each do |timetable|  %>
+             
+            
+             <% if timetable.saturaday == true  && school == timetable.classname  %>
+                <%= timetable.school %> <%= timetable.endtime %>
+
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+             <% elsif timetable.monday == true &&  school == timetable.classname %>
+                <%= timetable.school %><%= timetable.endtime %>
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+             <% elsif timetable.tuesday == true &&  school == timetable.classname %>
+                <%= timetable.school %><%= timetable.endtime %>
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+             <% elsif timetable.wednesday == true &&  school == timetable.classname %>
+                <%= timetable.school %><%= timetable.endtime %>
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+             <% elsif timetable.thursday== true && school == timetable.classname %>
+                <%= timetable.school %><%= timetable.endtime %>
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+             <% elsif timetable.friday == true &&  school == timetable.classname %>
+                <%= timetable.school %><%= timetable.endtime %>
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+             <% elsif timetable.sunday == true &&  school == timetable.classname %>
+                <%= timetable.school %><%= timetable.endtime%>
+                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec    %> 
+           
+             <% end -%>
+           
+             ==========
+
+ <% end %>

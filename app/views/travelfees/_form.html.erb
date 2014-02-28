@@ -11,15 +11,36 @@
     </div>
   <% end %>
 
+
+
+
   <div class="field">
   
     <%= f.input :userid, :as => :select, :collection => @users.map { |u| [u.userid,u.userid] } %>
     
   </div>
   <div class="field">
-    
-   <%= f.input :classname, :as => :select, :collection => @timetables.map { |u| [u.classname,u.classname] } %>
+   
+    Win  <br>
+   
+   <%= f.input :classname, :as => :check_boxes, :collection => @timetablewin.map { |u| [u.classname,u.classname] } %>
   </div>
+  
+  <div class="field">
+   
+    Momiji  <br>
+   
+   <%= f.input :classname, :as => :check_boxes, :collection => @timetablemmj.map { |u| [u.classname,u.classname] } %>
+    
+  </div>
+  <div class="field">
+   
+    GIC  <br>
+   
+   <%= f.input :classname, :as => :check_boxes, :collection => @timetablegic.map { |u| [u.classname,u.classname] } %>
+    
+  </div>
+
   <div class="field">
     <%= f.label :date %><br />
     <%= f.date_select :date %>
@@ -31,4 +52,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

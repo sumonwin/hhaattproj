@@ -29,6 +29,11 @@ class TravelfeesController < ApplicationController
     @travelfee = Travelfee.new
     @users = User.all
     @timetables = Timetable.all
+    @timetablewin = Timetable.where(school:"Win")
+    @timetablegic = Timetable.where(school:"GIC")
+    @timetablemmj = Timetable.where(school:"Momiji")
+    #@timetable = Timetable.group("school")
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @travelfee }
@@ -40,6 +45,9 @@ class TravelfeesController < ApplicationController
     @travelfee = Travelfee.find(params[:id])
     @users = User.all
     @timetables = Timetable.all
+    @timetablewin = Timetable.where(school:"Win")
+    @timetablegic = Timetable.where(school:"GIC")
+    @timetablemmj = Timetable.where(school:"Momiji")
   end
 
   # POST /travelfees
@@ -48,8 +56,12 @@ class TravelfeesController < ApplicationController
     @travelfee = Travelfee.new(params[:travelfee])
     @users = User.all
     @timetables = Timetable.all
+
+    
     respond_to do |format|
       if @travelfee.save
+        
+        
         format.html { redirect_to @travelfee, notice: 'Travelfee was successfully created.' }
         format.json { render json: @travelfee, status: :created, location: @travelfee }
       else

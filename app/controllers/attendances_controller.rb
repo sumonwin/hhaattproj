@@ -1,5 +1,6 @@
 require "users_controller"
 require "timetables_controller"
+require "travelfees_controller"
 
 class AttendancesController < ApplicationController
   # GET /attendances
@@ -7,20 +8,51 @@ class AttendancesController < ApplicationController
   def index
     @attendances = @timetables = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"])
      @users = User.all
-    
-
+     @travelfees = Travelfee.all
+     #@travelclass = Travelfee.where(userid:@attendance.userid , date:@attendance.date)
+     @timetables = Timetable.all
+     #@attcount = Attendance.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @attendances }
     end
   end
 
-  # GET /attendances/1   :all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"]
+  # GET /attendances/1   :all,:conditions=>[" userid  LIKE?  ", "%#{params[:userid]}%"]
   # GET /attendances/1.json
   def show
     @attendance = Attendance.find(params[:id])
+    @attcount = Attendance.all
+    @travelfees = Travelfee.all
+    # @travelclass = Travelfee.where(userid:@attendance.userid , date:@attendance.date)
+    # get one record from travelfee to enter @t
     
-    @timetable = Timetable.find(params[:id])
+  
+
+    #@w = @attendance.date.wday
+    #if (@w == 0)
+    # @var = "sunday"
+    # elsif (@w == 1)
+    #   @var = "monday"
+    #elsif (@w == 2)
+    #   @var = "tuesday"
+    # elsif (@w == 3)
+    #   @var = "wednesday"
+    # elsif (@w == 4)
+    #   @var = "thursday"
+    # elsif (@w == 5)
+    #   @var = "friday"
+    # else @var = "saturaday"
+    # end
+
+       
+      #@t = Timetable.where(classname:@travel[0][:classname],@var => true)
+    
+     
+     @timetables = Timetable.all
+
+     #@time = Timetable.where(classname:@t.classname)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @attendance }

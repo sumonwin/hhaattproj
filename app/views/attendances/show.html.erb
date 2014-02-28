@@ -1,10 +1,45 @@
 <p id="notice"><%= notice %></p>
 <% x = @attendance.reachtime.strftime("%H:%M:%S") %>
 <% y = @attendance.leavetime.strftime("%H:%M:%S") %>
-endtimefrom school:<%= @timetable.endtime %> //this is to test class end time correct or incorrect
-<% classendtime = @timetable.endtime.hour * 3600 + @timetable.endtime.min * 60 + @timetable.endtime.sec + 15 * 60 %>
-//to add 15 minutes to classendtime
-<% att_classfinisht = Time.at(classendtime).utc.strftime("%H:%M:%S") %> //to compare reach time
+<% classendtime  = 0%>
+
+
+  
+
+<% timeinterval =0 %>
+<% @timetables.each do |timetable|  %>
+  <% @travelfees.each do |travelfee|  %>
+     <% if (travelfee.date == @attendance.date) && (travelfee.classname == timetable.classname) %>
+
+       <% if timetable.school == "Win" %>
+      
+            <%  timeinterval = 30 * 60 %> Win 30 min<%= timeinterval %>
+       <% elsif  timetable.school == "Momiji" %>
+      
+             <%  timeinterval = 1 * 3600 %> Momiji 1 hr<%= timeinterval %>
+       <% elsif timetable.school == "GIC" %> 
+             <%= timetable.school %>
+             
+             <%  timeinterval = 15 * 60 %> GIC 15 min<%= timeinterval %>
+       <% else %>
+                  Out of bound
+       
+       <% end -%>
+     <% end -%>
+  <% end -%>
+<% end %>
+   <% timeshouldreach = Time.at(classendtime + timeinterval).utc.strftime("%H:%M:%S")%>
+
+<% count = 0 %>
+<% @attcount.each do |att1|  %>
+  
+         <% if  att1.userid == @attendance.userid && att1.date ==  @attendance.date %>
+        
+             <% count +=1 %>
+    
+          <% end -%>
+<% end -%>
+<p> count: <%= count  %></p>
  
 <p>
   <b>Userid:</b>
@@ -27,7 +62,7 @@ endtimefrom school:<%= @timetable.endtime %> //this is to test class end time co
 </p>
 <p>
   <b>attendance:</b>
-  <% if  ((x <= "08:30:00" || x <= att_classfinisht) && ( y >= "17:00:00"))%>
+  <% if  ((x <= "08:30:00" || x <= timeshouldreach) && ( y >= "17:00:00"))%>
           
             Full Day
             <p>
@@ -39,13 +74,13 @@ endtimefrom school:<%= @timetable.endtime %> //this is to test class end time co
             </p>
 
 
-   <% elsif  ((x <= "08:30:00" || x <= att_classfinisht)&&(( y >= "12:00:00")&&( y < "17:00:00"))) %>  leave 1
+   <% elsif  ((x <= "08:30:00" || x <= timeshouldreach)&&(( y >= "12:00:00")&&( y < "17:00:00"))) %>  halfday 1
 
     
    <% else %> 
-           <% if   (((x > "08:30:00" || x > att_classfinisht)&&(x <= "13:00:00"))&&( y >= "17:00:00")) %>
+           <% if   (((x > "08:30:00" || x > timeshouldreach)&&(x <= "13:00:00"))&&( y >= "17:00:00")) %>
            
-            leave 2
+            half day 2
                 <p>
                   <% if ( ( y > "17:30:00")) %>
 
@@ -56,7 +91,7 @@ endtimefrom school:<%= @timetable.endtime %> //this is to test class end time co
               <% else %>
                   
                      
-
+                    
                            
 
                      
@@ -79,7 +114,7 @@ endtimefrom school:<%= @timetable.endtime %> //this is to test class end time co
 </p>
 
 
-<p color="blue">Time to reach from jp class: <%= att_classfinisht %></p> //This is my calculation result to test  difference between reach time and classend time
+
 
 <%= link_to 'Edit', edit_attendance_path(@attendance) %> |
 <%= link_to 'Back', attendances_path %>

@@ -1,8 +1,8 @@
 class Attendance < ActiveRecord::Base
   attr_accessible :date, :leavetime, :reachtime, :userid
   belongs_to:users
-  has_many:travelfees
-  has_many:timetables, :through => :travelfees
+  belongs_to:travelfees
+  #shas_many:timetables, :through => :travelfees
   
   validates:userid,presence:true
   validates:reachtime,presence:true

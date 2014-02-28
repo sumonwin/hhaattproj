@@ -15,8 +15,13 @@
  </table>
  <%= submit_tag :find %>
 <% end %>
+
+
+   
+
 <table>
   <tr>
+    <th>Schoolfinishtime</th>
     <th>Userid</th>
     <th>Date</th>
     <th>Reachtime</th>
@@ -28,8 +33,100 @@
   </tr>
 
 <% @attendances.each do |attendance| %>
+
+<% classendtime  = 0%>
+<% @attendarray = [] %>
+<% @cname = ' '%>
+<% count = 0 %> 
+......get attendances that time of attendance >=1 '@attendarray'
+    <% @attendances.each do |att1|  %>
+     
+         <% if  att1.userid == attendance.userid && att1.date ==  attendance.date %>
+        
+             
+             <% @attendarray += Array(att1)%>
+             <% count +=1 %>
+             
+         <% end -%>
+    <% end -%>
+     <p> userid:<%= attendance.userid %>count: <%= count  %></p>
+     <p> data in attendarray:<%= @attendarray %></p>
+
+  <% @travelfees.each do |travelfee|  %>
+   
+   <% if (travelfee.date == attendance.date) && (travelfee.userid == attendance.userid) %>
+       
+      
+       
+   
+       <br>
+
+       <% @tclassname = travelfee.classname %>
+       <%  @t1 = @tclassname.gsub "- ''", ',' %>
+       <% @t2 = @t1.gsub "-", '' %>
+       <% @getschool =  @t2.split(",") %>
+   
+       <% @getschool.each do |school|  %>
+       
+         
+       
+            <% if ((school.exclude? ' ') == false)%>
+                  <% @cname = school.split(" ") %>
+                    <% @cname.each do |c| %>
+                      
+        
+                       <% @timetables.each do |timetable|  %>
+                          
+                          
+                            <% if timetable.saturaday == true  && c == timetable.classname  %>
+                              <td> <%= timetable.school %> <%= timetable.endtime %></td>
+                               <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+                           
+
+                             <% elsif timetable.monday == true &&  c == timetable.classname %>
+                              <td> <%= timetable.school %><%= timetable.endtime %></td>
+                               <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                             <% elsif timetable.tuesday == true &&  c == timetable.classname %>
+                               <td> <%= timetable.school %><%= timetable.endtime %></td>
+                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                             <% elsif timetable.wednesday == true &&  c == timetable.classname %>
+                                <td><%= timetable.school %><%= timetable.endtime %></td>
+                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                             <% elsif timetable.thursday== true && c == timetable.classname %>
+                                <td><%= timetable.school %><%= timetable.endtime %></td>
+                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                             <% elsif timetable.friday == true &&  c == timetable.classname %>
+                                <td><%= timetable.school %><%= timetable.endtime %></td>
+                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                             <% elsif timetable.sunday == true && c == timetable.classname %>
+                                <td><%= timetable.school %><%= timetable.endtime%></td>
+                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec    %> 
+                            <% end -%>
+                        ////
+                       <% end %>
+                    <% end %>
+
+            <% end %>
+        <% end %>
+      
+     <% end %>
+
+<% end %>    
+
+    
+ 
+
+
+
+
 <% att_reacht = attendance.reachtime.strftime("%H:%M:%S") %>
 <% att_leavet = attendance.leavetime.strftime("%H:%M:%S") %>
+
   <tr>
     <td><%= attendance.userid %></td>
     <td><%= attendance.date %></td>
@@ -67,6 +164,8 @@
     <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
     <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+
+
 <% end %>
 </table>
 
