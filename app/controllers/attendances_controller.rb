@@ -11,11 +11,12 @@ class AttendancesController < ApplicationController
      @travelfees = Travelfee.all
      #@travelclass = Travelfee.where(userid:@attendance.userid , date:@attendance.date)
      @timetables = Timetable.all
-     #@attcount = Attendance.all
+     @attcount = Attendance.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @attendances }
     end
+    
   end
 
   # GET /attendances/1   :all,:conditions=>[" userid  LIKE?  ", "%#{params[:userid]}%"]

@@ -17,52 +17,53 @@
 <% end %>
 
 
-   
-
 <table>
   <tr>
-    <th>Schoolfinishtime</th>
+    
     <th>Userid</th>
     <th>Date</th>
     <th>Reachtime</th>
     <th>Leavetime</th>
     <th>Attendance</th>
     <th>Overtime</th>
+    <th>Travelfee</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @attendances.each do |attendance| %>
 
-<% classendtime  = 0%>
+
 <% @attendarray = [] %>
 <% @cname = ' '%>
-<% count = 0 %> 
-......get attendances that time of attendance >=1 '@attendarray'
-    <% @attendances.each do |att1|  %>
+<% @classEndTimeArray = [] %> 
+<% @classStartTimeArray = [] %>
+<% @schoolArray = [] %>
+<% temp=0%>
+
+
+    <% @attcount.each do |att1|  %>
      
-         <% if  att1.userid == attendance.userid && att1.date ==  attendance.date %>
+         <% if   (attendance.userid == att1.userid) && (attendance.date ==  att1.date) %>
         
              
              <% @attendarray += Array(att1)%>
-             <% count +=1 %>
+             
              
          <% end -%>
     <% end -%>
-     <p> userid:<%= attendance.userid %>count: <%= count  %></p>
-     <p> data in attendarray:<%= @attendarray %></p>
-
+ 
+   <!--  count in attendarray:<%= @attendarray.count %><br>
+    data in attendarray:<%= @attendarray %><br> -->
+   <td>
   <% @travelfees.each do |travelfee|  %>
    
    <% if (travelfee.date == attendance.date) && (travelfee.userid == attendance.userid) %>
        
       
-       
-   
-       <br>
-
+    <!--   <%= travelfee.travel_fee %> -->
        <% @tclassname = travelfee.classname %>
-       <%  @t1 = @tclassname.gsub "- ''", ',' %>
+       <% @t1 = @tclassname.gsub "- ''", ',' %>
        <% @t2 = @t1.gsub "-", '' %>
        <% @getschool =  @t2.split(",") %>
    
@@ -79,84 +80,950 @@
                           
                           
                             <% if timetable.saturaday == true  && c == timetable.classname  %>
-                              <td> <%= timetable.school %> <%= timetable.endtime %></td>
-                               <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
-                           
+                       
+                              
+                               <% @schoolArray += Array(timetable.school) %>
+                              
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %> 
 
                              <% elsif timetable.monday == true &&  c == timetable.classname %>
-                              <td> <%= timetable.school %><%= timetable.endtime %></td>
-                               <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                               <% @schoolArray += Array(timetable.school) %>
+                               
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %> 
 
                              <% elsif timetable.tuesday == true &&  c == timetable.classname %>
-                               <td> <%= timetable.school %><%= timetable.endtime %></td>
-                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                               <% @schoolArray += Array(timetable.school) %>
+                               
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %> 
 
                              <% elsif timetable.wednesday == true &&  c == timetable.classname %>
-                                <td><%= timetable.school %><%= timetable.endtime %></td>
-                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                               <% @schoolArray += Array(timetable.school) %>
+                               
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %>
 
                              <% elsif timetable.thursday== true && c == timetable.classname %>
-                                <td><%= timetable.school %><%= timetable.endtime %></td>
-                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+
+                               <% @schoolArray += Array(timetable.school) %>
+                               
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %> 
 
                              <% elsif timetable.friday == true &&  c == timetable.classname %>
-                                <td><%= timetable.school %><%= timetable.endtime %></td>
-                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec  %> 
+                                
+                               <% @schoolArray += Array(timetable.school) %>
+                               
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %> 
 
                              <% elsif timetable.sunday == true && c == timetable.classname %>
-                                <td><%= timetable.school %><%= timetable.endtime%></td>
-                                <% classendtime =  timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec    %> 
+                                
+                               <% @schoolArray += Array(timetable.school) %>
+                              
+                               <% @classEndTimeArray += Array(timetable.endtime.hour * 3600 + timetable.endtime.min * 60 +  timetable.endtime.sec)  %> 
+                               <% @classStartTimeArray += Array(timetable.starttime.hour * 3600 + timetable.starttime.min * 60 +  timetable.starttime.sec)  %> 
                             <% end -%>
-                        ////
+                      
                        <% end %>
                     <% end %>
 
             <% end %>
         <% end %>
       
-     <% end %>
+        <% end %>
 
 <% end %>    
-
-    
+</td>
  
 
 
+<% x = attendance.reachtime.strftime("%H:%M:%S") %>
+<% y = attendance.leavetime.strftime("%H:%M:%S") %>
+<% attShouldStart = 0%>
+<% attShouldEnd = 0%>
+<% flag = 0 %>
+<% diff = 0 %>
+<% cstart = ''%>
+<% cend = ''%>
+<% classStartSubDiffArray = []%>
+<% classEndAddDiffArray = []%>
+<% i = 0%>
 
 
-<% att_reacht = attendance.reachtime.strftime("%H:%M:%S") %>
-<% att_leavet = attendance.leavetime.strftime("%H:%M:%S") %>
 
   <tr>
     <td><%= attendance.userid %></td>
     <td><%= attendance.date %></td>
-    <td><%= att_reacht %></td>
-    <td><%= att_leavet %></td>
-    <td><% if  ((att_reacht <= "08:30:00") && (att_leavet >= "17:00:00"))%>   Full Day 
+    <td><%= x %></td>
+    <td><%= y %></td>
+   <td>
+                        <% @travelfees.each do |travelfee|  %>
+                        
+                              <% if (travelfee.date == attendance.date) && (travelfee.userid == attendance.userid) %>
+                                Flag::<%= flag += 1 %>
+
+                                <% if(@schoolArray.count == 1 ) %>
+                                        <% if @schoolArray[0] == "Win" %>
+                                            <%  diff = 30 * 60 %>
+
+                                        <% elsif  @schoolArray[0]== "Momiji" %>
+      
+                                            <%  diff = 1 * 3600 %> 
+                                        <% elsif @schoolArray[0] == "GIC" %>
+                                            <%  diff = 15 * 60 %> 
+                                        <% else %>
+                                            Out of bound
+       
+                                        <% end -%>
+                                    <% if(@attendarray.count == 1)%>
+                                         <!-for  one attendance ->
+                                   
+                                          <%=  @classStartTimeArray[1]%>     
+                                          <%=  cstart =Time.at(@classStartTimeArray[0]).utc.            strftime("%H:%M:%S") %>
+                                          <%=  cend =Time.at(@classEndTimeArray[0]).utc.strftime(            "%H:%M:%S") %>
+                                          <%  cEndAddDif = Time.at(@classEndTimeArray[0] + diff).                utc.strftime("%H:%M:%S") %>
+                                          <%  cStartSubDiff = Time.at(@classStartTimeArray[0] -                  diff).utc.strftime("%H:%M:%S") %>
+                                        <% if (cstart <= "12:00:00") %>
+                                            <! class starts before 12:00:00>
+
+                                            <%if cStartSubDiff <= "08:30:00"%>
+                                                <! sure no att before class>
+                                                <%if x > cstart && x <= cEndAddDif%>
+                                                   <%if y>= "17:00:00"%>full
+                                                   <%elsif y >= "12:00:00" && y < "17:00:00"%>         half
+                                                   <%else%>absent
+                                                   <%end%>
+                                                <%elsif x <= "13:00:00" && y >= "17:00:00"%>half
+                                                <%else%>absent
+                                                <%end%>
+                                            <%else%>
+                                                <! sure att before class>
+
+                                                <%if cEndAddDif <= "13:00:00"%>
+                                                  <!class end+diff before 13>
+                                                  <%if x <= "13:00:00" && y >= "17:00:00"%>half
+                                                  <%else%>absent
+                                                  <%end%>
+
+                                                <%elsif cEndAddDif > "13:00:00" && cEndAddDif < "17:00:00"%>
+                                                  <! --time end+diff between 13 and 17->
+                                                  <%if (x > cstart && x <= cEndAddDif) && y >= "17:00:00" %> half
+                                                  <%elsif x <= "08:30:00" && (y < cend && y >= cStartSubDiff)%> half
+                                                  <%else%> absent
+                                                  <%end%>
+
+                                                <%else%>another case ?? end+diff > 17
+                                                <%end%>
+                                            <%end%>
+                                           
+                                        <% else %>
+
+                                             <! class starts after 12:00:00>
+                                             <%if cEndAddDif >= "17:00:00"%>
+                                                <! sure no att after class>
+                                                  <%if x <= "08:30:00"%>
+                                                    <%if y < cend%>
+                                                       <%if y >= cStartSubDiff%>full
+                                                       <%else%> <%if cStartSubDiff >= "12:00:00"          && cStartSubDiff <= "13:00:00"          %>full
+                                                                <%elsif y >=  "12:00:00"%>full
+                                                                <%else%>absent
+                                                                <%end%>
+                                                       <%end%>
+                                                    <%else%>half
+                                                    <%end%>
+                                                  <%else%>
+                                                    <%if x<= "13:00:00" && (y < cend && y>= cStartSubDiff)%> half
+                                                    <%else%>absent
+                                                    <%end%>
+                                                  <%end%>
+                                             <%else%>
+                                              <!for both for class starts before job and after job>
+                                               <%if x <= "08:30:00"%>
+                                                   <%if y < cend %>
+                                                        <%if (y >= cStartSubDiff) %> half
+
+                                                         <%else%>
+                                                                 <%if cStartSubDiff>= "12:00:00"      && cStartSubDiff <= "13:00:00" %>
+                                                                     <%if y >= "12:00:00"  %>half
+                                                                     <%else%>absent
+                                                                     <%end%>
+                                                                 <%else%>absent
+                                                                 <%end%>
+
+                                                               absent
+                                                          <%end%>
+                                                    <%else%>half
+                                                    <%end%>
+                                               <%else%>
+                                                     <%if x <= "13:00:00" && y >= "17:00:00"%>half
+                                                     <%else%>absent
+                                                     <%end%>
+                                               <%end%>
+                                            <%end%>
+                                         
+                                           
+                                         <% end %>
+                                              
+
+                                        count <%= @attendarray.count%>
+                                        
+                                      <% elsif(@attendarray.count == 2)%>
+                                          <!-for  two attendances, use varX and varY instead of cstart and cend->
+
+                                          <% a = @attendarray[0].reachtime.strftime("%H:%M:%S") %>
+                                          
+                                          <% b = @attendarray[0].leavetime.strftime("%H:%M:%S") %>
+                                          <% c = @attendarray[1].reachtime.strftime("%H:%M:%S") %>
+                                          <% d = @attendarray[1].leavetime.strftime("%H:%M:%S") %>
+
+                                         
+                                         <b>  cS-dif: <%= varX =Time.at(@classStartTimeArray[0] - diff).utc.strftime("%H:%M:%S")%></b>
+                                         <b>  cE+dif:<%= varY =Time.at(@classEndTimeArray[0] + diff).utc.strftime("%H:%M:%S")%></b>
+
+                                           
+                                            <% if a <= "08:30:00" %>
+                                            
+                                               <% if b >= varX %>
+                                                  s!!<%= varX %>
+                                                   e!!<%= varY%>
+                                                   <%if c <= varY %>
+                                                      <%if c > varX%>
+                                                        <%if d >=  "17:00:00"%>
+                                                           full
+                                                        <%else%> +half
+                                                        <%end%>
+                                                      <% else %> half
+                                                      <%end%>
+
+                                                    <% elsif (varY >= "12:00:00" && varY <= "13:00:00")%>
+                                                       <%if b < varY%>
+                                                          <%if (c <=  "13:00:00" && d>="17:00:00")%>
+                                                           full
+                                                          <%else%> half
+                                                          <%end%>
+                                                       <%elsif(c <=  "13:00:00" && d>="17:00:00")%>half
+                                                       <%else%>absent
+                                                       <%end%>
+                                                    <% else %><%if(varY> "13:00:00") %>
+                                                                 <% if   (c >  varX )%>            @  half
+                                                                 <% else %> @ absent
+                                                                 <%end%>
+                                                              <%elsif(varY < "12:00:00") %>
+                                                                 <% if   (c <= "13:00:00"&&d >=  "17:00:00")%>              $ half
+                                                                 <% else %> $ absent
+                                                                 <%end%>
+                                                              <%end%>
+                                                    
+                                                    <%end%>
+                                               <% else %>
+                                               ##go ahead
+                                               s!!<%= varX %>
+                                                   e!!<%= varY%>
+                                                   <% if (varX >= "12:00:00" && varX <= "13:00:00")%>
+
+                                                       <%if (b >= "12:00:00" && b < varY)%>
+                                                          <%if (c <= varY && d >= "17:00:00")%>
+                                                           full
+                                                          <%else%>
+                                                           half
+                                                          <%end%>
+                                                       <%elsif (c <= varY && d >= "17:00:00")%>
+                                                           half
+                                                       <%else%>
+                                                           absent 
+                                                       <%end%>//////////////////////////////
+
+                                                  <% elsif (c < cend && d >= "17:00:00") %>
+                                                          <%if b < "13:00:00"%>   '' half day
+                                                          <%else%>?absent
+                                                          <%end%>
+                                                   <% else %>
+                                                   ??
+                                                                <% if   (c <= "13:00:00" && d >= "17:00:00")%>                   !!half
+                                                                <% elsif varX > "13:00:00"%>
+                                                                    <% if b <= varX  %>
+                                                                      <%if b >= "12:00:00"%>;half
+                                                                      <%else%>.absent
+                                                                      <%end%>
+                                                                    <%else%>?//
+                                                                    <%end%>
+                                                                <%else%>absent
+                                                             <%end%>
+                                                   <%end%>
+                                               <% end %>
+                                             <% else %>
+                                             @@
+                                              <!for x 8:30>
+                                              <% if b >= varX %>
+                                                  s!!<%= varX %>
+                                                   e!!<%= varY%>
+                                                    <%if c <= varY%>
+                                                      
+                                                       <%if d >=  "17:00:00"%>
+                                                         half
+                                                       <%else%> absent
+                                                       <%end%>
+
+                                                    <% elsif (varY >= "12:00:00" && varY <= "13:00:00")%>
+                                                        %%
+                                                       <%if (c <=  "13:00:00" && d>="17:00:00")%>
+                                                        half
+                                                       <%else%> absent
+                                                       <%end%>
+                                                    <% else %><%if(varY > "13:00:00") %>
+                                                                 <% if   (c >=  varX  && c < varY)%>           @  half
+                                                                 <% else %> @absent
+                                                                 <%end%>
+                                                              <%elsif(varY < "12:00:00") %>
+                                                                 <% if   (c < "13:00:00"&&d >=  "17:00:00")%>              ;$ half
+                                                                 <% else %> $ absent
+                                                                 <%end%>
+                                                              <%else%>::
+                                                              <%end%>
+                                                   
+                                                   <%end%>
+                                              <% else %>
+                                               ##
+                                               s!!<%= varX %>
+                                                   e!!<%= varY%>
+                                                   <% if (varX >= "12:00:00" && varX <= "13:00:00")%>
+
+                                                       <%if (b >= "12:00:00" && b < varY)%>
+                                                          <%if (c <= varY && d >= "17:00:00")%>
+                                                           half
+                                                          <%else%>
+                                                           absent
+                                                          <%end%>
+                                                       <%elsif (c <= varY && d >= "17:00:00")%>
+                                                           half
+                                                       <%else%>
+                                                           absent
+                                                       <%end%>
+
+                                                 
+                                                   <% else %>
+                                                      <%if(varY > "13:00:00") %>
+                                                                 <% if  (c > varY && d >= "17:00:00")%>       half
+                                                                 <% else %> @absent
+                                                                 <%end%>
+                                                      <%elsif(varY < "12:00:00") %>
+                                                                 <% if  (c <= varY && d >=  "17:00:00")%>       half
+                                                                 <% else %>  absent
+                                                                 <%end%>
+                                                        <%else%>
+                                                              <%if c <= "13:00:00" && d >= "17:00:00"%>half
+                                                                <%else%>absent
+                                                                <%end%>
+                                                       <%end%>
+                                                   <%end%>
+                                              <% end %>
+                                        <% end %>
+                                      <% end %>
+
+                                          
+                                    <% else %>
+                                    <! for more than one school/class>
+                                     <%@schoolArray[0]%><br>
+                                   <% c1Start=Time.at(@classStartTimeArray[0]).utc.strftime("%H:%M:%S")%>
+                                   <% c1End=Time.at(@classEndTimeArray[0]).utc.strftime("%H:%M:%S")%>
+                                    <% @schoolArray[1]%>
+                                   <% c2Start=Time.at(@classStartTimeArray[1]).utc.strftime("%H:%M:%S")%>
+                                   <% c2End=Time.at(@classEndTimeArray[1]).utc.strftime("%H:%M:%S")%>
+                                   <%if c2Start < c1Start%>
+                                        <%  temp = c1Start %>
+                                        <%  c1Start= c2Start%>
+                                        <% c2Start= temp%>
+                                        <%   temp=@classStartTimeArray[0]%>
+                                        <% @classStartTimeArray[0]=@classStartTimeArray[1]%>
+                                        <%  @classStartTimeArray[1]= temp%>
+
+                                      
+                                        <%  temp = c1End %>
+                                        <%  c1End= c2End%>
+                                        <%  c2End= temp%>
+                                        <%  temp=@classEndTimeArray[0]%>
+                                        <% @classEndTimeArray[0]= @classEndTimeArray[1]%>
+                                        <%  @classEndTimeArray[1]= temp%>
+
+                                   
+                                        <%  temp = @schoolArray[0] %>
+                                        <%  @schoolArray[0]= @schoolArray[1]%>
+                                        <%  @schoolArray[1]= temp%>
+                                     
+                                   
+                                   <%end%>
+                                    <% @schoolArray.each do |sarray|  %>
+                                        <% if sarray == "Win" %>
+                                           
+                                          <% classStartSubDiffArray += Array( Time.at(@classStartTimeArray[i] -  30 * 60).utc.strftime("%H:%M:%S"))%>
+                                            <% classEndAddDiffArray += Array( Time.at(@classEndTimeArray[i] +  30 * 60).utc.strftime("%H:%M:%S"))%>
+
+
+                                        <% elsif  sarray== "Momiji" %>
+      
+                                            <% classStartSubDiffArray += Array( Time.at(@classStartTimeArray[i] -  60 * 60).utc.strftime("%H:%M:%S"))%>
+                                            <% classEndAddDiffArray += Array( Time.at(@classEndTimeArray[i] + 60 * 60).utc.strftime("%H:%M:%S"))%>
+
+                                        <% elsif sarray == "GIC" %>
+                                         <% classStartSubDiffArray += Array( Time.at(@classStartTimeArray[i] -  15 * 60).utc.strftime("%H:%M:%S"))%>
+                                           <% classEndAddDiffArray += Array( Time.at(@classEndTimeArray[i]+  15 * 60).utc.strftime("%H:%M:%S"))%>
+
+                                        <% else %>
+                                            Out  bound
+       
+                                        <% end -%>
+                                         <% i += 1%>
+                                    <% end -%>
+                                    <!@schoolArray[0] = c1Start, c2End = classStartSubDiffArray[0] = classEndAddDiffArray[0] for class1>
+                                      :<%= classStartSubDiffArray%><br>
+                                      :<%= classEndAddDiffArray %>
+                                      <% if(@attendarray.count == 1)%>
+                                                    <!code for two class and one att starts here>
+                                                          <%if classEndAddDiffArray[0] >= classStartSubDiffArray[1]%>
+                                                           <!one att and 2 classes continue>
+                                                                <%if classStartSubDiffArray[0] <= "08:30:00"%>
+                                                                 <! no job before classes>
+                                                                     <%if classEndAddDiffArray[1] <  "12:00:00"%>
+                                                                      ??
+                                                                       <%if x > c2Start && x <= classEndAddDiffArray[1]%>
+                                                                           <%if y >= "17:00:00"%>full
+                                                                           <%elsif y >= "12:00:00" && y < "17:00:00"%>half
+                                                                           <%else%>absent
+                                                                           <%end%>
+                                                                       <%elsif x <= "13:00:00" && y >= "17:00:00"%> half
+                                                                       <%else%>absent
+                                                                       <%end%>
+                                                                     <%else%>
+                                                      <!for  both cases 12<=class2endtime<= 13 and greater than 13>
+                                                                           <%if x > c2Start%>
+                                                                                <%if (x <= "13:00:00" || x <= classEndAddDiffArray[1] ) && y >= "17:00:00"%> full
+                                                                                <%else%>half
+                                                                                <%end%>
+                                                                            <%elsif y >= "17:00:00"%>half
+                                                                            <%else %>absent
+                                                                            <%end%>
+                                                                     <%end%> <! no job before classes>
+                                                                <%else%>
+                                                                   <%if classEndAddDiffArray[1] >= "17:00:00"%>
+
+                                                                      <%if classStartSubDiffArray[0] > "13:00:00"%>
+                                                                        <%if y < c1End && y >= classStartSubDiffArray[0]%>
+                                                                           <%if x <= "08:30:00"%>full
+                                                                           <%elsif x <= "13:00:00" && x > "08:30:00"%>half
+                                                                           <%else%>absent
+                                                                           <%end%>
+                                                                        <%elsif y >= "12:00:00" && x <= "08:30:00"%>   half
+                                              
+                                                                         <%else%>absent
+                                                                         <%end%>
+                                                                      <%else%>
+                                                                          <%if y < c1End%>
+                                                                                <% if (y >=  "12:00:00" || y >= classStartSubDiffArray[0]) && x <= "08:30:00"%>full 
+                                                                                <%else%>half
+                                                                                <%end%>
+                                                                          <%elsif x <= "08:30:00"%>half
+                                                                          <%else%>absent
+                                                                          <%end%>
+                                                                      <%end%>
+                                                                   <%else%>
+                                                                     <% if c1Start <= "12:00:00"%>
+                                                                          <%if classEndAddDiffArray[1] <= "13:00:00"%>
+                                                                             <%if x <= "13:00:00" && y >= "17:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%elsif classEndAddDiffArray[1] > "13:00:00" && classEndAddDiffArray[1] < "17:00:00"%>
+                                                                                <%if (x > c2Start && x <= classEndAddDiffArray[1])&& y >=  "17:00:00"%> half
+                                                                                <%elsif x <= "08:30:00" && (y < c1End && y >= classStartSubDiffArray[1])%>half
+                                                                                <%else%>absent
+                                                                                <%end%>
+                                                                          <%else%> out ofbound class2enddiff > 17
+                                                                          <%end%>
+                                                                     <%else%>
+                                                                          <%if x <=  "08:30:00"%>
+                                                                             <%if y < c1End%>
+                                                                                 <%if y >= classStartSubDiffArray[1]%> half
+                                                                                 <%elsif (classStartSubDiffArray[0] >= "12:00:00"  && classStartSubDiffArray[0] <= "13:00:00")%>
+                                                                                      <%if y >= "12:00:00"%>half
+                                                                                      <%else%>absent
+                                                                                      <%end%>
+                                                                                 <%else%>absent
+                                                                                 <%end%>
+                                                                             <%else%>half
+                                                                             <%end%>
+                                                                          <%else%>
+                                                                             <%if x <=  "13:00:00" && y >=  "17:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%end%>
+                                                                     <%end%>
+                                                                   <%end%>
+                                                                <%end%><!2 classes continue end>
+                                                          <%else%>
+                                                           <!one att and 2 classes separate>
+                                                               <%if classStartSubDiffArray[0] <= "08:30:00"%> 
+                                                               <!for two cases "f c1 att c2 f", "f c1 att c2 t">
+                                                                   <%if classEndAddDiffArray[1] >=  "17:00:00"%>
+                                                                      <!for the case "f c1 att c2 f">
+                                                                      <%if x > c1Start%>
+                                                                           <%if x <= classEndAddDiffArray[0]%>
+                                                                               <%if y < c2End%>
+                                                                                   <%if y >= classStartSubDiffArray[1]%>full
+                                                                                   <%else%>
+                                                                                       <%if classStartSubDiffArray[1] >=  "12:00:00" && classStartSubDiffArray[1] <=  "13:00:00"%>
+                                                                                            <%if y >=  "12:00:00"%>full
+                                                                                            <%else%>half
+                                                                                            <%end%>
+                                                                                       <%elsif y >=  "12:00:00"%>     half
+                                                                                       <%else%>absent
+                                                                                       <%end%>
+                                                                                   <%end%>
+                                                                               <%else%>half
+                                                                               <%end%>
+                                                                           <%else%>
+                                                                              <%if x <=  "13:00:00" && (y < c2End &&  y >= classStartSubDiffArray[1])%>
+                                                                                   <%if (classEndAddDiffArray[0] >=  "12:00:00" && classEndAddDiffArray[0] <=  "13:00:00") && x <=  "13:00:00"%>full
+                                                                                   <%else%>half
+                                                                                   <%end%>
+                                                                              <%else%>absent
+                                                                              <%end%>
+                                                                           <%end%>
+                                                                      <%else%>
+                                                                           <%if y < c2End && y >= classStartSubDiffArray[1]%>half
+                                                                           <%elsif y >=  "12:00:00"%>half
+                                                                           <%else%>absent
+                                                                           <%end%>
+                                                                      <%end%>
+                                                                   <%else%>
+                                                                      <!for the case "f c1 att c2 t">
+                                                                         <%if x > c1Start%>
+                                                                             <%if x <= classEndAddDiffArray[0]%>
+                                                                                <%if classEndAddDiffArray[1] > "13:00:00"%>
+                                                                                     <%if y< c2End%>
+                                                                                        <%if y >= classStartSubDiffArray[1]%>half
+                                                                                        <%else%> 
+                                                                                            <%if classStartSubDiffArray[1]>= "12:00:00" && y >= "12:00:00"%>half
+                                                                                            <%else%>absent
+                                                                                            <%end%>
+                                                                                        <%end%>
+                                                                                     <%else%>half
+                                                                                     <%end%>
+                                                                                <%else%>
+                                                                                     <%if classEndAddDiffArray[1] >= "12:00:00" && classEndAddDiffArray[1] <= "13:00:00"%>half
+                                                                                     <%else%>absent
+                                                                                     <%end%>
+                                                                                <%end%>
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                         <%else%>
+                                                                            <%if y >= "12:00:00"%>half
+                                                                            <%else%>absent
+                                                                            <%end%>
+                                                                         <%end%>
+
+                                                                   <%end%>
+                                                               <%else%>
+                                                                <!for two case "t c1 att c2 f", "t c1 att c2 t">
+                                                                 <%if classEndAddDiffArray[1] >= "17:00:00"%>
+                                                                    <!for " t c1 att c2 f">
+                                                                      <%if classStartSubDiffArray[0] <= "13:00:00"%>
+                                                                           <%if  x > c1Start%>
+                                                                              <%if x <= classEndAddDiffArray[0]%>
+                                                                                  <%if y >= classStartSubDiffArray[1]%>
+                                                                                       half
+                                                                                  <%else%>absent
+                                                                                  <%end%>
+                                                                              <%else%>
+                                                                                  <%if classEndAddDiffArray[0] <"13:00:00" &&(x <= "13:00:00" && y >= classStartSubDiffArray[1])%>half
+                                                                                  <%else%>absent
+                                                                                  <%end%>
+                                                                              <%end%>
+                                                                           <%else%>
+                                                                              <%if y >= classStartSubDiffArray[1]%>half
+                                                                              <%else%>absent
+                                                                              <%end%>
+                                                                           <%end%>
+                                                                      <%else%>absent
+                                                                      <%end%>
+                                                                 <%else%>
+                                                                    <!for "t c1 att c2 t">absent
+                                                                 <%end%>
+                                                               <%end%>
+                                                            
+                                                          <%end%>
+                                                  <%else%>
+                                                    <!code for two class and more than one att starts here>
+                                                    <%if @attcount == 2%>
+                                                  
+                                                    <% a = @attendarray[0].reachtime.strftime("%H:%M:%S") %>
+                                                    <% b = @attendarray[0].leavetime.strftime("%H:%M:%S") %>
+                                                    <% c = @attendarray[1].reachtime.strftime("%H:%M:%S") %>
+                                                    <% d = @attendarray[1].leavetime.strftime("%H:%M:%S") %>
+                                                         <%if classEndAddDiffArray[1] <  "17:00:00"%>
+                                                           <! c1 att c2 att><!att c1+c2 att><!? c1 att c2 att>
+                                                              <%if%>
+                                                                   <! c1 att c2 att>
+                                                                  <%if a >c1Start && a<= classEndAddDiffArray[0]%>
+                                                                      <%if b < c2End && b >= classStartSubDiffArray[1]%>
+                                                                          <%if c > c2Start && c <= classEndAddDiffArray[1]%>
+                                                                             <%if d>=  "17:00:00" %>full
+                                                                             <%elsif d >=  "12:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%else%>
+                                                                             <%if classEndAddDiffArray[1] < "12:00:00"%>
+                                                                                 <%if c <= "13:00:00" && d>= "17:00:00"%>half
+                                                                                 <%else%>absent
+                                                                                 <%end%>
+
+                                                                             <%elsif classEndAddDiffArray[1] >= "12:00:00" && classEndAddDiffArray[1]<= "13:00:00"%>
+                                                                                 <%if c <= "13:00:00" && d>= "17:00:00"%>full
+                                                                                 <%else%>half
+                                                                                 <%end%>
+                                                                             <%else%>half
+                                                                             <%end%>
+                                                                          <%end%>
+                                                                      <%else%>
+                                                                          <%if classEndAddDiffArray[1] <=  "13:00:00"%>
+                                                                             <%if c <=  "13:00:00" && d >=  "17:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%else%>
+                                                                             <%if  (b <=  "13:00:00" && (c > c2Start && c <= classEndAddDiffArray[1]))&& d>=  "17:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%end%>
+                                                                      <%end%>
+                                                                   <%else%>
+                                                                      <%if classEndAddDiffArray[1] <=  "13:00:00"%>
+                                                                         <%if c <=  "13:00:00" && d >=  "17:00:00"%> half
+                                                                         <%else%>absent
+                                                                         <%end%>
+                                                                      <%else%>
+                                                                         <%if (b <=  "13:00:00" && (c > c2Start && c <= classEndAddDiffArray[1]))&& d>=  "17:00:00"%>half
+                                                                     
+                                                                         <%else%>absent
+                                                                         <%end%>
+                                                                      <%end%>
+                                                                   <%end%> 
+                                                              <%else%>
+                                                              <!att c1+c2 att><!? c1 att c2 att><!att c1 att c2 ?>
+                                                                    <%if classEndAddDiffArray[0] >=classStartSubDiffArray[1]%>
+                                                                    <!  2 classes continue><!att c1+c2 att>
+                                                                    <%if a <= "08:30:00"%>
+                                                                        <%if b < c2End && b >= classStartSubDiffArray%>
+                                                                          <%if c > c2Start && c <= classEndAddDiffArray[1]%>
+                                                                             <%if d>=  "17:00:00" %>full
+                                                                             <%elsif d >=  "12:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%else%>
+                                                                             <%if classEndAddDiffArray[1] < "12:00:00"%>
+                                                                                 <%if c <= "13:00:00" && d>= "17:00:00"%>half
+                                                                                 <%else%>absent
+                                                                                 <%end%>
+
+                                                                             <%elsif classEndAddDiffArray[1] >= "12:00:00" && classEndAddDiffArray[1]<= "13:00:00"%>
+                                                                                 <%if c <= "13:00:00" && d>= "17:00:00"%>full
+                                                                                 <%else%>half
+                                                                                 <%end%>
+                                                                             <%else%>half
+                                                                             <%end%>
+                                                                          <%end%>
+                                                                        <%else%>
+                                                                          <%if classEndAddDiffArray[1] <=  "13:00:00"%>
+                                                                             <%if c <=  "13:00:00" && d >=  "17:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%else%>
+                                                                             <%if  (b <=  "13:00:00" && (c > c2Start && c <= classEndAddDiffArray[1]))&& d>=  "17:00:00"%>half
+                                                                             <%else%>absent
+                                                                             <%end%>
+                                                                          <%end%>
+                                                                        <%end%>
+                                                                      <%else%>
+                                                                        <%if classEndAddDiffArray[1] <=  "13:00:00"%>
+                                                                         <%if c <=  "13:00:00" && d >=  "17:00:00"%> half
+                                                                         <%else%>absent
+                                                                         <%end%>
+                                                                        <%else%>
+                                                                         <%if (b <=  "13:00:00" && (c > c2Start && c <= classEndAddDiffArray[1]))&& d>=  "17:00:00"%>half
+                                                                     
+                                                                         <%else%>absent
+                                                                         <%end%>
+                                                                        <%end%>
+                                                                      <%end%> 
+
+                                                                    <%else%>
+                                                                    <!? c1 att c2 att><!att c1 att c2 ?>
+                                                                          <%if a <= "08:30:00"%>
+                                                                             <!att c1 att c2 ?>
+                                                                             <%if classEndAddDiffArray[1] <  "12:00:00"%>absent
+                                                                             <%else%>
+                                                                                <%if b< c1End && b <= classStartSubDiffArray[0]%>
+                                                                                  <%if classEndAddDiffArray[1] >=  "12:00:00" && classEndAddDiffArray[1] <=  "13:00:00"%>
+                                                                                      <%if (c <= classEndAddDiffArray[0] && c > c1Start)%>
+                                                                                          <%if d < c2End && d >= classStartSubDiffArray[1]%>half
+                                                                                          <%else%>absent
+                                                                                          <%end%>
+                                                                                      <%else%>absent
+                                                                                      <%end%>
+
+                                                                                  <%else%>
+                                                                                      <%if classEndAddDiffArray[0] < "12:00:00"%>
+                                                                                          <%if (c <= classEndAddDiffArray[0] && c > c1Start) && d >= "12:00:00"%>half
+                                                                                          <%else%>absent
+                                                                                          <%end%>
+                                                                                      <%else%>half
+                                                                                      <%end%>
+                                                                                  <%end%>
+                                                                                <%else%>absent
+                                                                                <%end%>
+                                                                             <%end%>
+
+                                                                          <%else%>
+                                                                              <!? c1 att c2 att><!att c1 att c2 ?>
+                                                                              <%if d < "17:00:00"%>
+                                                                                 <!att c1 att c2 ?>
+                                                                                 absent
+
+                                                                              <%else%>
+                                                                                <!? c1 att c2 att>
+                                                                                <%if classEndAddDiffArray[1] <=  "13:00:00"%>
+                                                                                    <%if c <=  "13:00:00"%>half
+                                                                                    <%else%>absent
+                                                                                    <%end%>
+                                                                                <%else%>
+                                                                                    <%if classEndAddDiffArray[0] <  "12:00:00"%>
+                                                                                        <%if b <= "13:00:00" && (c > c2Start && c<= classEndAddDiffArray[1])%>half
+                                                                                        <%else%>absent
+                                                                                        <%end%>
+                                                                                    <%elsif classEndAddDiffArray[0] >=  "12:00:00" && classEndAddDiffArray[0] <=  "13:00:00"%>
+                                                                                         <%if a <= "13:00:00" && (b < c2End && b >= classStartSubDiffArray[1])&&(c > c2Start && c<= classEndAddDiffArray[1])%>half
+                                                                                         <%else%>
+                                                                                         <%end%>
+                                                                                    <%else%>absent
+                                                                                    <%end%>
+                                                                                <%end%>
+
+
+                                                                              <%end%>
+                                                                          <%end%>
+
+
+
+                                                                    <%end%>
+
+                                                              <%end%>
+                                                         <%else%>
+                                                           <!att c1 att c2>
+                                                            <%if  a <= "08:30:00"%>
+                                                                <%if b < c1End && b >= classStartSubDiffArray[0]%>
+                                                                   <%if c <= classEndAddDiffArray[0] && c > c1Start%>
+                                                                       <%if d>= classStartSubDiffArray[1] %>
+                                                                          <%if d< c2End%>full
+                                                                          <%else%>half
+                                                                          <%end%>
+                                                                       <%else%>
+                                                                          <%if d >="12:00:00"  %>half
+                                                                          <%else%>absent
+                                                                          <%end%>
+                                                                       <%end%>
+                                                                   <%else%>
+                                                                      <%if classEndAddDiffArray[0] >= "12:00:00" && classEndAddDiffArray[0] <= "13:00:00"%>
+                                                                          <%if c<= "13:00:00" && (d>= classStartSubDiffArray[1] && d< c2End)%>full
+                                                                          <%else%>half
+                                                                          <%end%>
+                                                                      <%else%>
+                                                                          <%if c<= "13:00:00" && (d>= classStartSubDiffArray[1] && d< c2End)%>  half
+                                                                          <%else%>absent
+                                                                          <%end%>
+                                                                      <%end%>
+                                                                   <%end%>
+                                                                <%else%>
+                                                                  <%if c<= "13:00:00" && (d>= classStartSubDiffArray[1] && d< c2End)%>half
+                                                                  <%else%>absent
+                                                                  <%end%>
+                                                                <%end%>
+                                                            <%else %>
+                                                               <%if b< c1End && b >= classStartSubDiffArray[0]%>
+                                                                  <%if c <= classEndAddDiffArray[0] && c > c1Start%>  
+                                                                     <%if d>= classStartSubDiffArray[1] && d< c2End%>half
+                                                                     <%else%>absent
+                                                                     <%end%>
+                                                                  <%else%>
+                                                                     <%if c<= "13:00:00" && (d>= classStartSubDiffArray[1] && d< c2End)%>
+                                                                         half
+                                                                     <%else%>absent
+                                                                     <%end%>
+                                                                  <%end%>
+                                                               <%else%>
+                                                                  <%if c<= "13:00:00" && (d>= classStartSubDiffArray[1] && d< c2End)%>half
+                                                                  <%else%>absent
+                                                                  <%end%>
+                                                               <%end%>
+                                                            <%end%>
+
+                                                         <%end%>
+                                                     <%else%>
+
+                                                      <!att c1 att c2 att>
+                                                      <% a = @attendarray[0].reachtime.strftime("%H:%M:%S") %>
+                                                      <% b = @attendarray[0].leavetime.strftime("%H:%M:%S") %>
+                                                      <% c = @attendarray[1].reachtime.strftime("%H:%M:%S") %>
+                                                      <% d = @attendarray[1].leavetime.strftime("%H:%M:%S") %>
+                                                      <% e = @attendarray[2].reachtime.strftime("%H:%M:%S") %>
+                                                      <% f = @attendarray[2].leavetime.strftime("%H:%M:%S") %> 
+                                                        <%if a<=  "08:30:00" %>
+                                                          <%if b < c1End && b >= classStartSubDiffArray[0]%>
+                                                             <%if c<= classEndAddDiffArray[0]  && c > c1Start%>
+                                                                <%if  d>= classStartSubDiffArray[1] && d< c2End%>
+                                                                   <%if e > c2Start && e<= classEndAddDiffArray[1]%>
+                                                                      <%if f >= "17:00:00"%>full
+                                                                      <%else%>half
+                                                                      <%end%>
+                                                                   <%else%>
+                                                                      <%if e>= "12:00:00" %>half
+                                                                      <%else%>absent
+                                                                      <%end%>
+                                                                   <%end%>
+                                                                <%else%> 
+                                                                    <%if classStartSubDiffArray[1] >= "12:00:00" && classStartSubDiffArray[1] <=  "13:00:00"%>
+                                                                        <%if d>= "12:00:00"%>
+                                                                           <%if (e > c2Start && e<= classEndAddDiffArray[1]) && f >=  "17:00:00"%>full
+                                                                           <%else%>half
+                                                                           <%end%>
+
+                                                                        <%else%>
+                                                                           <%if (e > c2Start && e<= classEndAddDiffArray[1]) && f >=  "17:00:00"%>half
+                                                                           <%else%>absent
+                                                                           <%end%>
+
+                                                                       <%end%>
+                                                                   
+                                                                    <%else%>
+                                                                       <%if d>= "12:00:00"%>half
+                                                                       <%else%>absent
+                                                                       <%end%>
+                                                                    <%end%>
+                                                                <%end%>
+                                                             <%else%>
+                                                               <%if classEndAddDiffArray[0] >= "12:00:00" && classEndAddDiffArray[0] <= "13:00:00"%>
+                                                                  <%if (c <= "13:00:00" && (d>= classStartSubDiffArray[1] && d< c2End))&& ((e > c2Start && e<= classEndAddDiffArray[1])&&f >=  "17:00:00")%>full
+                                                                  <%else%>half
+                                                                  <%end%>
+                                                               <%else%>
+                                                                 <%if classEndAddDiffArray[1] >= "12:00:00" && classEndAddDiffArray[1] <= "13:00:00"%>
+                                                                   <%if d <=  "13:00:00" && ((e > c2Start && e<= classEndAddDiffArray[1]) && f >=  "17:00:00")%>half
+                                                                  <%else%>absent
+                                                                   <%end%>
+                                                                 <%else%>
+                                                                   <%if (c <= "13:00:00" && d>= classStartSubDiffArray[1] && d< c2End)&& ((e > c2Start && e<= classEndAddDiffArray[1])&&f >=  "17:00:00") %>half
+                                                                   <%else%>absent
+                                                                   <%end%>
+                                                                <%end%>
+                                                              <%end%>
+                                                             <%end%>  
+                                                          <%else  %>
+                                                            <%if classEndAddDiffArray[1] >= "12:00:00" && classEndAddDiffArray[1] <= "13:00:00"%>
+                                                                <%if d <=  "13:00:00" && ((e > c2Start && e<= classEndAddDiffArray[1]) && f >=  "17:00:00")%>half
+                                                                <%else%>absent
+                                                                <%end%>
+                                                            <%else%>
+                                                                <%if (c <= "13:00:00" && d>= classStartSubDiffArray[1] && d< c2End)&& ((e > c2Start && e<= classEndAddDiffArray[1])&&f >=  "17:00:00") %>half
+                                                                <%else%>absent
+                                                                <%end%>
+                                                            <%end%>
+                                                          <%end%>
+                                                        <%else%>
+                                                        ??
+                                                          <%if b < c1End && b >= classStartSubDiffArray[0]%>
+                                                             <%if c<= classEndAddDiffArray[0]  && c > c1Start%>
+                                                                <%if  d>= classStartSubDiffArray[1] && d< c2End%>
+                                                                   <%if e > c2Start && e<= classEndAddDiffArray[1]%>
+                                                                      <%if f >= "17:00:00"%>half
+                                                                      <%else%>absent
+                                                                      <%end%>
+                                                                   <%else%>absent
+                                                                   <%end%>
+                                                                <%else%>
+                                                                   <%if classStartSubDiffArray[1] >= "12:00:00" && classStartSubDiffArray[1] <=  "13:00:00"%>
+                                                                      <%if d>= "12:00:00" && ((e > c2Start && e<= classEndAddDiffArray[1]) && f >=  "17:00:00")%>half
+                                                                      <%else%>absent
+
+                                                                      <%end%>
+                                                                   <%else%>
+                                                                      <%if (c <= "13:00:00" && d>= classStartSubDiffArray[1] && d< c2End)&& ((e > c2Start && e<= classEndAddDiffArray[1])&&f >=  "17:00:00")%>half
+                                                                      <%else%>absent
+                                                                      <%end%>
+                                                                   <%end%>
+                                                                <%end%>
+                                                              <%else %>zz
+                                                                 <%if (c <= "13:00:00" && d>= classStartSubDiffArray[1] && d< c2End)&& ((e > c2Start && e<= classEndAddDiffArray[1])&&f >=  "17:00:00")%>half
+                                                                  <%else%>absent
+                                                                  <%end%>
+                                                              <%end%>
+                                                          <%else%>zz
+                                                                  <%if (c <= "13:00:00" && d>= classStartSubDiffArray[1] && d< c2End)&& ((e > c2Start && e<= classEndAddDiffArray[1])&&f >=  "17:00:00")%>half
+                                                                   <%else%>absent
+                                                                   <%end%>
+                                                          <%end%> 
+                                                        <%end%>
+
+
+                                                     <%end%>
+
+                                                  <%end%>
+                                               
+                                     
+                                                  xxxxxxxxxxxxxxxxxx
+                                   
+                                     <% end %>                           
+                                 
+                            <% end %>
+                        <% end %>
+
+                   
+                       
+
+                      
+                            <% if flag == 0 %>
+
+                                 Flag:<%= flag %>
+                                 <% if  ((x <= "08:30:00") && (y >= "17:00:00"))%>   Full Day 
           
-            <% if ( (att_leavet > "17:30:00")) %>
-                <td> <%= Time.at((attendance.leavetime.hour * 3600 + attendance.leavetime.min * 60 + attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> 
-                </td>
-            <% end %>
+                                    <% if ( (y > "17:30:00")) %>
+                                        <td> Overtime: <%= Time.at((attendance.leavetime.hour * 3600 + attendance.leavetime.min * 60 + attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> </td>
+               
+                                     <% end %>
 
-        <% elsif  ((att_reacht <= "08:30:00")&&((att_leavet >= "12:00:00")&&(att_leavet < "17:00:00"))) %>        Half Day1
+                                 <% elsif  ((x <= "08:30:00")&&((y >= "12:00:00")&&(y < "17:00:00"))) %>           !  Half Day1
 
-        <% else %>
+                                 <% else %>
 
-            <% if   (((att_reacht > "08:30:00")&&(att_reacht <= "13:00:00"))&&(att_leavet >= "17:00:00")) %>
-                Half Day2 
+                                     <% if   (((x > "08:30:00")&&(x <= "13:00:00"))&&(y >= "17:00:00")) %>
+                                            !  Half Day2 
                 
-                    <% if ( (att_leavet > "17:30:00")) %>
-                        <td>   <%= Time.at((attendance.leavetime.hour * 3600 + attendance.leavetime.min * 60 +  attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> 
-                        </td>
-                <% end %>
+                                             <% if ( (y > "17:30:00")) %>
+                                                <td>  Overtime:  <%= Time.at((attendance.leavetime.hour * 3600 + attendance.leavetime.min * 60 +  attendance.leavetime.sec) - 63000).utc.strftime("%H:%M:%S")  %> 
+                                                </td>
+                                             <% end %>
                 
-            <% else %> Absent <td> </td>
-                    
-                    
-            <% end %>
+                                     <% else %> Absent 
 
-        <% end %>
+
+
+                                      <% end %>
+
+                                 <% end %>
+                          <% end %>
+
+                   
 
     </td>
     
