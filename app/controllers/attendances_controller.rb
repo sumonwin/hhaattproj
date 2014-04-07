@@ -6,9 +6,59 @@ class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = @timetables = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"])
+
+    
+     if (params["date"] != nil)
+
+      
+         if (params["month"].to_i == 1)
+           @month1 = 12
+           @year1  = (params["date"]["grandyear"].to_i)-1
+
+         else
+           @month1 = (params["month"].to_i())-1
+           @year1= params["date"]["grandyear"]
+           
+         end
+           @year2= params["date"]["grandyear"]
+     end
+      @month2 = params["month"]
+      @date2 = @year2.to_s()+"-"+ @month2.to_s()+"-25"
+      @date1 = @year1.to_s()+"-"+@month1.to_s()+"-26"
+     
+     if((Date.today.month).to_i == 1)
+       @previousmonth = 12
+       @previousyear = ((Date.today.year).to_i)-1
+
+     else
+        @previousmonth = ((Date.today.month).to_i)-1
+        @previousyear = Date.today.year
+       
+     end
+        @currentmonth = Date.today.month
+        @currentyear  = Date.today.year
+        @currentdate = @currentyear.to_s()+'-'+ @currentmonth.to_s()+"-25"
+        @previousdate =  @previousyear.to_s()+'-'+ @previousmonth .to_s()+"-26"
+
+     
+
+     if(params["date"] == nil)
+       @attendances  = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE?", "%#{params[:useridd]}%" ])
+       @attend   = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" date BETWEEN ? AND ? ", @previousdate , @currentdate ], :select => 'DISTINCT userid')
+       @query = Attendance.find(:all,:conditions=>[" date BETWEEN ? AND ? ", @previousdate , @currentdate ], :select => 'DISTINCT userid,date')
+       @travel = Travelfee.find(:all,:conditions=>[" date BETWEEN ? AND ? ", @previousdate , @currentdate ], :select => 'DISTINCT userid,date,travel_fee')
+     else
+       @attendances  = Attendance.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>["userid  LIKE? AND date BETWEEN ? AND ? ", "%#{params[:useridd]}%" , @date1 , @date2  ])
+       @attend   = Attendance.find(:all,:conditions=>["userid  LIKE? AND date BETWEEN ? AND ? ","%#{params[:useridd]}%", @date1 , @date2 ], :select => 'DISTINCT userid')
+       @query = Attendance.find(:all,:conditions=>["userid  LIKE? AND  date BETWEEN ? AND ? ", "%#{params[:useridd]}%", @date1 , @date2 ], :select => 'DISTINCT userid,date')
+       @travel = Travelfee.find(:all,:conditions=>[" date BETWEEN ? AND ? ", @date1 , @date2 ], :select => 'DISTINCT userid,date,travel_fee')
+     end  
+
+
+   
      @users = User.all
      @travelfees = Travelfee.all
+     #@m = month
      #@travelclass = Travelfee.where(userid:@attendance.userid , date:@attendance.date)
      @timetables = Timetable.all
      @attcount = Attendance.all
@@ -25,32 +75,7 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.find(params[:id])
     @attcount = Attendance.all
     @travelfees = Travelfee.all
-    # @travelclass = Travelfee.where(userid:@attendance.userid , date:@attendance.date)
-    # get one record from travelfee to enter @t
-    
-  
-
-    #@w = @attendance.date.wday
-    #if (@w == 0)
-    # @var = "sunday"
-    # elsif (@w == 1)
-    #   @var = "monday"
-    #elsif (@w == 2)
-    #   @var = "tuesday"
-    # elsif (@w == 3)
-    #   @var = "wednesday"
-    # elsif (@w == 4)
-    #   @var = "thursday"
-    # elsif (@w == 5)
-    #   @var = "friday"
-    # else @var = "saturaday"
-    # end
-
-       
-      #@t = Timetable.where(classname:@travel[0][:classname],@var => true)
-    
-     
-     @timetables = Timetable.all
+    @timetables = Timetable.all
 
      #@time = Timetable.where(classname:@t.classname)
     

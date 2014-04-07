@@ -4,7 +4,7 @@ class TravelfeesController < ApplicationController
   # GET /travelfees
   # GET /travelfees.json
   def index
-    @travelfees = Travelfee.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE? ", "%#{params[:userid]}%"])
+    @travelfees = Travelfee.paginate(:page=>params[:page],:per_page=>5).find(:all,:conditions=>[" userid  LIKE? ", "%#{params[:useridd]}%"])
     @users = User.all
     respond_to do |format|
       format.html # index.html.erb

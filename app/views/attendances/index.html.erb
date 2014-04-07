@@ -3,18 +3,27 @@
  <table>
     <tr>
         <td>User id</td> 
-        <td><%= select_tag :userid, options_for_select(@users.collect{|u| [u.userid,u.userid]}) %>
+        <td><%= select_tag :useridd, options_for_select(@users.collect{|u| [u.userid,u.userid]}) %>
         </td>
     </tr>
     <tr>
         <td>Month</td>
-        <td> <%= select_tag "month", options_for_select(%w[Jan Feb March April May June July Augest Sept Oct Nov Dec])%>
+        <td> <%= select_tag :month, options_for_select([['Jan',1],['Feb',2],['March',3] , ['April',4] , ['May ',5] , ['June',6] , ['July',7] , ['Augest',8] , ['Sept',9] , ['Oct',10] , ['Nov',11] , ['Dec',12]])%>
         </td>
     </tr>
-     
+    <tr>
+         <td>Year </td>
+          <td> <%= select_year(Date.today, :start_year => Time.now.year , :end_year => Time.now.year - 95 ,:field_name => "grandyear" )%>
+          </td> 
+        
+    </tr>
+    date1: <%=@date1%><br>   date2: <%=@date2%> 
+
+    
  </table>
  <%= submit_tag :find %>
 <% end %>
+
 
 
 <table>
@@ -33,7 +42,7 @@
 
 <% @attendances.each do |attendance| %>
 
-
+<% flag = 0 %>
 <% @attendarray = [] %>
 <% @cname = ' '%>
 <% @classEndTimeArray = [] %> 
@@ -147,13 +156,14 @@
 <% y = attendance.leavetime.strftime("%H:%M:%S") %>
 <% attShouldStart = 0%>
 <% attShouldEnd = 0%>
-<% flag = 0 %>
+
 <% diff = 0 %>
 <% cstart = ''%>
 <% cend = ''%>
 <% classStartSubDiffArray = []%>
 <% classEndAddDiffArray = []%>
 <% i = 0%>
+<% fees = 0%>
 
 
 
@@ -167,6 +177,7 @@
                         
                               <% if (travelfee.date == attendance.date) && (travelfee.userid == attendance.userid) %>
                                 Flag::<%= flag += 1 %>
+                                <%fees = travelfee.travel_fee%><!for fees in travelfee>
 
                                 <% if(@schoolArray.count == 1 ) %>
                                         <% if @schoolArray[0] == "Win" %>
@@ -1023,10 +1034,25 @@
                                  <% end %>
                           <% end %>
 
-                   
-
+   </td>
+    <%tfee =0%>
+  
+    <% @users.each do |user|%>
+                <% if attendance.userid == user.userid %>
+                  <% tfee = user.normaltravelfee%>
+                <% end %>
+            <% end %>
+    <td>OT</td>
+     <td> 
+        
+           <%if flag == 0%>
+               ??<%=tfee%>
+             
+           <%else%>
+             :<%= fees%>
+              
+           <%end%>
     </td>
-    
     <td><%= link_to 'Show', attendance %></td>
     <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
     <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -1039,3 +1065,112 @@
 <br />
 <%= will_paginate @attendances %>
 <%= link_to 'New Attendance', new_attendance_path %>
+
+<br>
+<br>
+<br>
+<h2> Travelfee for each month</h2>
+ 
+
+<%@travelfeeWithNoAttArray = []%>
+
+<% @travel.each do |travel| %>
+            <%travelcount =0%>
+       
+              <% @query.each do |query| %>
+                              
+                  <%if (travel.userid == query.userid) && (travel.date == query.date)%>
+                           
+                         <%travelcount +=1%>
+                  
+                  <%end%>
+              <%end%>
+              <%if travelcount == 0%>
+                  
+                     <% @travelfeeWithNoAttArray += Array(travel)%>
+              <%end%>
+               
+          
+ <%end%>
+           
+
+<table>
+
+  <tr>
+    
+    <th>Userid</th>
+    <th>CurrentMonth</th>
+    <th>LeaveDay</th>
+    <th>Leftin10days</th>
+    <th>TotalTravelfee</th>
+    
+  </tr>
+
+  <% @attend.each do |attend| %>
+
+  <tr>
+    <td><%=attend.userid %></td> 
+    <td><%=  Date.today.strftime( "%B")%></td> 
+    <td></td> 
+    <td></td>
+    <td>
+                     <%count=0%>
+                     <%feesTotal=0%>
+                     <%day = 0 %>
+                      
+              
+     
+            <% @query.each do |query| %>
+              
+               <%flag = 0%>
+               <%if attend.userid == query.userid%>
+                    <%count += 1%>
+
+                    <% @travelfees.each do |travelfee|  %>
+                        <% if  (travelfee.userid == query.userid) %>
+                               <%if  (travelfee.date == query.date)%>
+                                   <!attend with class>
+                                   <% flag +=1%>
+                                    
+                                   <% feesTotal += travelfee.travel_fee%>
+                               <%else%>
+                                   <!attend with class>
+                               <%end%>         
+                        <%end%>
+                    <%end%>
+                    
+                     <%if flag == 0%>
+                          <% @users.each do |user|%>
+                                 <% if query.userid == user.userid %>
+                                              <% feesTotal += user.normaltravelfee%>
+                                 <% end %>
+                          <% end %>
+                     <%end%>
+                    
+               <%end%>
+                       
+            <%end%>
+
+       count:<%=count%>
+          <%= feesTotal%> 
+          <%tfeecount = 0%>
+        <% @travelfeeWithNoAttArray.each do |tfee| %>
+           <%if attend.userid == tfee.userid%>
+               
+                           
+                                  +  <%=tfee.travel_fee%> 
+                                    <%tfeecount += 1%>
+                                    <% feesTotal += tfee.travel_fee%>
+              
+        
+           <%end%>
+        <%end%>
+      count:  <%=tfeecount %>
+      total:  <%= feesTotal%>
+  
+    </td> 
+  </tr>
+<%end%>
+</table> 
+
+

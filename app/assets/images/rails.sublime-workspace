@@ -4,6 +4,86 @@
 		"selected_items":
 		[
 			[
+				"su",
+				"sunday"
+			],
+			[
+				"time",
+				"timetable"
+			],
+			[
+				"tim",
+				"timetable"
+			],
+			[
+				"els",
+				"elsif	elsif ..."
+			],
+			[
+				"tra",
+				"travelfee"
+			],
+			[
+				"fees",
+				"feesTotal"
+			],
+			[
+				"fee",
+				"feesTotal"
+			],
+			[
+				"yea",
+				"year"
+			],
+			[
+				"to",
+				"to_s"
+			],
+			[
+				"mon",
+				"month"
+			],
+			[
+				"tr",
+				"travel_fee"
+			],
+			[
+				"use",
+				"userid"
+			],
+			[
+				"select",
+				"select_tag"
+			],
+			[
+				"se",
+				"select_year"
+			],
+			[
+				"gr",
+				"grandyear"
+			],
+			[
+				"year",
+				"year1"
+			],
+			[
+				"date",
+				"date2"
+			],
+			[
+				"mo",
+				"month"
+			],
+			[
+				"end",
+				"end_year"
+			],
+			[
+				"user",
+				"useridd"
+			],
+			[
 				"c1",
 				"c1Start"
 			],
@@ -32,10 +112,6 @@
 				"classStartSubDiffArray"
 			],
 			[
-				"se",
-				"sec"
-			],
-			[
 				"ho",
 				"hour"
 			],
@@ -50,10 +126,6 @@
 			[
 				"cen",
 				"cend"
-			],
-			[
-				"tra",
-				"travelfee"
 			],
 			[
 				"cE",
@@ -90,10 +162,6 @@
 			[
 				"en",
 				"end	end (ERB)"
-			],
-			[
-				"els",
-				"else"
 			],
 			[
 				"if",
@@ -156,24 +224,12 @@
 				"classname"
 			],
 			[
-				"time",
-				"timetables"
-			],
-			[
-				"end",
-				"endtime"
-			],
-			[
 				"co",
 				"count"
 			],
 			[
 				"el",
 				"else"
-			],
-			[
-				"tim",
-				"timeinterval"
 			],
 			[
 				"t",
@@ -184,20 +240,12 @@
 				"classname"
 			],
 			[
-				"tr",
-				"travelfees"
-			],
-			[
 				"class",
 				"classname"
 			],
 			[
 				"req",
 				"require"
-			],
-			[
-				"user",
-				"userid"
 			],
 			[
 				"ti",
@@ -248,26 +296,26 @@
 	"buffers":
 	[
 		{
-			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 77736,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "/home/sumyatnoelwin/HHA/attproj/app/controllers/attendances_controller.rb",
 			"settings":
 			{
-				"buffer_size": 3452,
+				"buffer_size": 4789,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
+			"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 2900,
+				"buffer_size": 80412,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sumyatnoelwin/HHA/attproj/app/models/timetable.rb",
+			"settings":
+			{
+				"buffer_size": 325,
 				"line_ending": "Unix"
 			}
 		}
@@ -299,18 +347,22 @@
 	},
 	"file_history":
 	[
-		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/tempo.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/copytravelfee.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/models/travelfee.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/controllers/travelfees_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/index.html.erb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/controllers/attendances_controller.rb",
+		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/tempo.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/models/attendance.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/users/show.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/models/timetable.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/models/user.rb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/new.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/users/temposhow.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/sessions/new.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/config/routes.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/passwords/new.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/home/get.html.erb",
@@ -319,11 +371,9 @@
 		"/home/sumyatnoelwin/HHA/attproj/app/controllers/application_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/edit.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/attendances/_form.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/_form.html.erb",
 		"/home/sumyatnoelwin/Desktop/note",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/show.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/controllers/travelfees_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/travelfees/edit.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/_form.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/layouts/application.html.erb",
@@ -335,7 +385,6 @@
 		"/home/sumyatnoelwin/HHA/attproj/app/controllers/users_controller.rb",
 		"/home/sumyatnoelwin/HHA/attproj/Gemfile",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/show.html.erb",
-		"/home/sumyatnoelwin/HHA/attproj/app/views/timetables/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/users/index.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/users/_form.html.erb",
 		"/home/sumyatnoelwin/HHA/attproj/app/views/devise/registrations/edit.html.erb",
@@ -387,6 +436,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			" \n",
+			" <td> <%= select_year(Date.today, :start_year => Time.now.year , :end_year => Time.now.year - 95 ,:field_name => \"grandyear\" )%></td>",
+			"]}%\"])\n",
+			"date",
+			"]))%>",
 			"half",
 			"count",
 			"users",
@@ -413,49 +467,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 77736,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								28582,
-								28582
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 8476.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "/home/sumyatnoelwin/HHA/attproj/app/controllers/attendances_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3452,
+						"buffer_size": 4789,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								785,
-								785
+								1187,
+								1187
 							]
 						],
 						"settings":
@@ -464,28 +488,28 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 339.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 459.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/show.html.erb",
+					"buffer": 1,
+					"file": "/home/sumyatnoelwin/HHA/attproj/app/views/attendances/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2900,
+						"buffer_size": 80412,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1207,
-								1207
+								79713,
+								79713
 							]
 						],
 						"settings":
@@ -495,7 +519,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 294.0,
+						"translation.y": 22457.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/sumyatnoelwin/HHA/attproj/app/models/timetable.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 325,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								162,
+								162
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 180.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -535,6 +587,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -576,7 +632,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 186.0,
+	"side_bar_width": 213.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
